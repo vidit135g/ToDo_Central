@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorBackground"
+    tools:context=".ui.view.task.AddTaskActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <ScrollView
+        android:id="@+id/svTaskDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilTaskTitle"
+                style="@style/TextInputLayoutOutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="@string/hint_title"
+                app:hintTextColor="#4a4a4a"
+                app:errorEnabled="true">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/tvTaskTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textAutoCorrect|textCapSentences"
+                    android:textColor="@color/gblue"
+                    android:textSize="21sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.card.MaterialCardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/cvTaskNote"
+                style="@style/TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tilTaskTitle"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="20dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/greyWhite"
+                card_view:cardBackgroundColor="?attr/colorBackground"
+                card_view:cardCornerRadius="5dp"
+                card_view:contentPadding="16dp"
+                card_view:strokeWidth="1dp">
+
+                <TextView
+                    android:id="@+id/tvTaskNote"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/hint_note"
+                    android:maxLines="7"
+                    android:textColor="?android:attr/android:textColorPrimary"
+                    android:textColorHint="#4a4a4a"
+                    android:textSize="19sp" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/cvTaskReminder"
+                style="@style/TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cvTaskNote"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="84dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/greyWhite"
+                card_view:cardBackgroundColor="?attr/colorBackground"
+                card_view:cardCornerRadius="30dp"
+                card_view:contentPaddingBottom="16dp"
+                card_view:contentPaddingTop="16dp"
+                card_view:strokeWidth="1dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cvTaskNote">
+
+                    <ImageView
+                        android:id="@+id/ivTaskReminderIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/drawable_reminder" />
+
+                    <TextView
+                        android:id="@+id/tvTaskReminder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_toStartOf="@id/ivDeleteTaskReminder"
+                        android:layout_toEndOf="@id/ivTaskReminderIcon"
+                        android:focusableInTouchMode="false"
+                        android:hint="@string/hint_reminder"
+                        android:textColor="?android:attr/android:textColorPrimary"
+                        android:textColorHint="#4a4a4a"
+                        android:textSize="19sp" />
+
+                    <ImageView
+                        android:id="@+id/ivDeleteTaskReminder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="16dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/round_close_black_24"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </RelativeLayout>
+    </ScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnTaskConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="40dp"
+        android:padding="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="16dp"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:background="@drawable/button_gradient_background"
+        android:text="Create new task"
+        android:textStyle="bold"
+        app:strokeColor="@color/gblue"
+        android:textAllCaps="false"
+        android:textColor="@color/gblue"
+        android:textSize="16sp"/>
+</RelativeLayout>

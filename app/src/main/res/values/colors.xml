@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="lightBlueGrey">#1e2c37</color>
+    <color name="deepBlueGrey">#17242d</color>
+    <color name="blue">#2373fc</color>
+    <color name="purple">#6812cb</color>
+    <color name="red">#F44336</color>
+    <color name="white">#FFFFFF</color>
+    <color name="whiteTransparent97">#F7FFFFFF</color>
+    <color name="whiteTransparent90">#E6FFFFFF</color>
+    <color name="dullGrey">#E0E0E0</color>
+    <color name="greyWhite">#BDBDBD</color>
+    <color name="lightGrey">#1AFFFFFF</color>
+    <color name="deepGrey">#1A000000</color>
+    <color name="grey">#424242</color>
+    <color name="deepDarkGrey">#212121</color>
+    <color name="black">#000000</color>
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#BDBDBD</color>
+    <color name="gblack">#000</color>
+    <color name="gred">#DB4437</color>
+    <color name="ggreen">#0F9D58</color>
+    <color name="gblue">#4285f4</color>
+    <color name="gyellow"> #F4B400</color>
+    <color name="gpink">#d81b60</color>
+    <color name="ggray">#424242</color>
+    <color name="gdblue">#1565c0</color>
+    <color name="gpurple">#4527a0</color>
+    <color name="glyellow">#ffeb3b</color>
+    <color name="glpurple">#9575cd</color>
+    <color name="gorange">#e64a19</color>
+    <color name="glpink">#f48fb1 </color>
+</resources>

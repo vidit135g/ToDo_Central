@@ -1,0 +1,175 @@
+<resources>
+    <string name="app_name">ToDo Central</string>
+    <string name="simple_todo_title">Todo Central</string>
+    <string name="empty_view_title">No tasks</string>
+    <string name="empty_view_text">You can create new tasks \n using the + button</string>
+    <string name="search_view_empty_text">Search to find particular tasks</string>
+    <string name="search_view_not_found_text"> </string>
+    <string name="create_task">New\u0020Task</string>
+    <string name="hint_reminder">Reminder</string>
+    <string name="hint_title">Title</string>
+    <string name="hint_note">Add a note</string>
+    <string name="add_task">Add</string>
+    <string name="update_task">Update</string>
+    <string name="edit_task">Edit \u0020\u0020 Task</string>
+    <string name="task_note">Note</string>
+
+    <string name="intro_1_title">Plan your day</string>
+    <string name="intro_1_description">Organize your tasks and don\'t forget about important things!</string>
+    <string name="intro_2_title">Manage your tasks easily</string>
+    <string name="intro_2_description">Use left or right swipes to remove task and up or down to change it\'s position in the list</string>
+    <string name="intro_3_title">Add task using voice</string>
+    <string name="intro_3_description">Add new tasks quickly using the voice input by long press the + button</string>
+    <string name="intro_4_title">Let\'s get started</string>
+    <string name="intro_4_description">Get rid of procrastination and improve your productivity!</string>
+
+    <string name="toast_incorrect_time">Error! You have selected an incorrect time!</string>
+    <string name="error_text_input">Please, enter a title!</string>
+    <string name="error_spaces">Please, enter a valid title!</string>
+
+    <string name="preferences_animation_title">Enable animations</string>
+    <string name="preferences_animation_summary">Enable animations for UI elements</string>
+    <string name="preferences_theme_title">Choose a theme</string>
+    <string name="preferences_theme_summary">Change application color scheme</string>
+    <string name="preferences_general_notification_title">Enable general notification</string>
+    <string name="preferences_general_notification_summary">Show notification with your current task list</string>
+    <string name="preferences_notification_channel_title">Notifications options</string>
+    <string name="preferences_notification_channel_summary">Set custom sound, vibration and etc.</string>
+    <string name="preferences_date_format_title">Date format</string>
+    <string name="preferences_date_format_summary">Change date format</string>
+    <string name="preferences_time_format_title">Time format</string>
+    <string name="preferences_time_format_summary">Change time format</string>
+    <string name="preferences_backup_create_title">Create a backup</string>
+    <string name="preferences_backup_create_summary">Export tasks to the device storage</string>
+    <string name="preferences_backup_restore_title">Restore a backup</string>
+    <string name="preferences_backup_restore_summary">Import tasks from the device storage</string>
+    <string name="preferences_kotter_knife_title">Kotter Knife</string>
+    <string name="preferences_kotter_knife_summary">JakeWharton</string>
+    <string name="preferences_circular_anim_title">CircularAnim</string>
+    <string name="preferences_circular_anim_summary">XunMengWinter</string>
+    <string name="preferences_rx_java_title">RxJava</string>
+    <string name="preferences_rx_kotlin_title">RxKotlin</string>
+    <string name="preferences_reactive_libraries_summary">ReactiveX</string>
+    <string name="preferences_dresscode_title">DressCode</string>
+    <string name="preferences_dresscode_summary">Daio-io</string>
+    <string name="preferences_material_intro_title">Material-Intro</string>
+    <string name="preferences_material_intro_summary">heinrichreimer</string>
+
+    <string name="feedback_title">Todo Central</string>
+    <string name="feedback_device_info">My device info: </string>
+    <string name="feedback_app_version">App version: </string>
+    <string name="feedback">Feedback: </string>
+
+    <string name="settings_user_interface">User Interface</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_date_and_time">Date &amp; Time</string>
+    <string name="settings_backup_and_restore">Backup &amp; Restore</string>
+    <string name="settings_rate">Rate this app</string>
+    <string name="settings_feedback">Send Feedback</string>
+    <string name="settings_other_apps">Other apps</string>
+    <string name="settings_git_hub">GitHub page</string>
+    <string name="settings_privacy_policy">Privacy policy</string>
+    <string name="settings_licenses">Licenses</string>
+    <string name="settings_no_email_apps">No email apps installed!</string>
+    <string name="settings_no_browser_apps">No browser apps installed!</string>
+
+    <string name="settings">Settings</string>
+    <string name="settings_page_title_user_interface">Interface</string>
+    <string name="settings_page_title_notifications">Notifications</string>
+    <string name="settings_page_title_date_and_time">Date \u0020 &amp; \u0020 Time</string>
+    <string name="settings_page_title_backup_and_restore">Backup \u0020\u0020 &amp; \u0020\u0020 Restore</string>
+    <string name="settings_page_title_licenses">Licenses</string>
+
+    <string name="settings_menu">Settings</string>
+    <string name="search">Search</string>
+
+    <string name="reminder_text">Reminder</string>
+    <string name="reminder_today">Today at %1$s</string>
+    <string name="reminder_yesterday">Yesterday at %1$s</string>
+    <string name="reminder_tomorrow">Tomorrow at %1$s</string>
+
+    <string name="snackbar_remove_task">Task is removed!</string>
+    <string name="snackbar_undo">Undo</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_save">Save</string>
+    <string name="dialog_title"><b>Are you sure?</b></string>
+    <string name="dialog_message">Deleted task cannot be restored</string>
+
+    <string name="backup_create_dialog_message">The previous backup file will be deleted</string>
+    <string name="backup_create_dialog_button">Create backup</string>
+    <string name="backup_restore_dialog_message">All current tasks will be deleted</string>
+    <string name="backup_restore_dialog_button">Restore backup</string>
+
+    <string name="backup_create_message_success">Backup created successfully!</string>
+    <string name="backup_create_message_failure">Failed to create backup!</string>
+    <string name="backup_restore_message_success">Backup is restored!</string>
+    <string name="backup_restore_message_failure">Failed to restore backup!</string>
+    <string name="backup_restore_message_nothing">Nothing to restore</string>
+
+    <string name="permission_storage_denied_toast">Storage permission denied</string>
+    <string name="permission_microphone_denied_toast">Microphone permission denied</string>
+    <string name="permission_storage_toast">Open "Permissions" and grant the "Storage" permission</string>
+    <string name="permission_microphone_toast">Open "Permissions" and grant the "Microphone" permission</string>
+    <string name="permission_storage_snackbar_with_rationale">Storage permission is needed to write a backup to a file</string>
+    <string name="permission_microphone_snackbar_with_rationale">Microphone permission is needed to add new task using voice</string>
+    <string name="permission_storage_snackbar_no_permission">Storage permission isn\'t granted</string>
+    <string name="permission_microphone_snackbar_no_permission">Microphone permission isn\'t granted</string>
+    <string name="permission_snackbar_button_grant">GRANT</string>
+    <string name="permission_snackbar_button_settings">SETTINGS</string>
+
+    <string name="speech_to_text_hint">Please, say the task text…</string>
+    <string name="speech_to_text_error">Error! Something went wrong…</string>
+
+    <string name="general_notification_1">You have</string>
+    <string name="general_notification_2">active task:</string>
+    <string name="general_notification_3">active tasks:</string>
+    <string name="general_notification_4">active tasks:</string>
+
+    <string name="notification_channel">Notifications</string>
+    <string name="general_notification_channel">General Notification</string>
+
+    <string name="widget_title">Todo Central</string>
+    <string name="author_gmail">jai135g@gmail.com</string>
+
+    ////////////////<!-- "What's New?" page -->////////////////
+    <string name="whats_new_title">What\'s New ?</string>
+    <string name="whats_new_button_text">Okay</string>
+    <string name="whats_new_item_1_text">Added app intro</string>
+    <string name="whats_new_item_2_text">Minor UI improvements</string>
+
+    ///////////////<!-- Rate this app dialog -->///////////////
+    <string name="rate_dialog_title">Rate this app</string>
+    <string name="rate_dialog_message">If you enjoy using this app, would you mind taking a moment to rate it? It won\'t take more than a minute. Thanks for your support!</string>
+    <string name="rate_dialog_ok">Rate now</string>
+    <string name="rate_dialog_cancel">Later</string>
+    <string name="rate_dialog_no">No, Thanks</string>
+
+    ////////////////<!-- Date/Time format dialog -->/////////////////
+    <string name="date_format_dialog_title">Choose date format:</string>
+    <string name="date_format_at">"%1$s at %2$s"</string>
+    <string-array name="date_format_list">
+        <item>Day.Month.Year</item>
+        <item>Year.Month.Day</item>
+        <item>Month.Day.Year</item>
+        <item>Year.Day.Month</item>
+    </string-array>
+
+    <string name="time_format_dialog_title">Choose time format:</string>
+    <string-array name="time_format_list">
+        <item>24-hours format</item>
+        <item>12-hours format</item>
+    </string-array>
+
+    <string name="app_theme_dialog_title">Choose a theme:</string>
+    <string-array name="app_theme">
+        <item>Light</item>
+        <item>Dark</item>
+        <item>Black</item>
+    </string-array>
+
+    ///////////////<!-- Shortcuts -->///////////////
+    <string name="shortcut_add_new_task">Add new task</string>
+    <string name="shortcut_search">Search</string>
+    <string name="pref_previously_started" />
+</resources>

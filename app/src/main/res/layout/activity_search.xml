@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="?attr/colorBackground"
+    tools:context=".ui.view.SearchActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSearchResultsList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp"
+        android:overScrollMode="never" />
+
+    <LinearLayout
+        android:id="@+id/llEmptyView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/ivEmptyIllustration"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:layout_gravity="center"
+            app:lottie_autoPlay="true"
+            android:scaleType="centerCrop"
+            android:visibility="visible"
+            app:lottie_rawRes="@raw/strategy"
+            app:lottie_loop="true" />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/ivNotFound"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:layout_gravity="center"
+            app:lottie_autoPlay="true"
+            android:visibility="gone"
+            android:scaleType="centerCrop"
+            app:lottie_rawRes="@raw/notfound"
+            app:lottie_loop="true" />
+
+        <TextView
+            android:id="@+id/tvEmptyTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="@string/search_view_empty_text"
+            android:textColor="@color/greyWhite"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</RelativeLayout>

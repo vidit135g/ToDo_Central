@@ -1,0 +1,166 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorBackground"
+    android:overScrollMode="never"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvUI"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:drawableStart="@drawable/drawable_ui"
+            android:drawableEnd="@drawable/drawable_arrow"
+            android:drawablePadding="9.95dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/settings_user_interface"
+            android:textAppearance="?android:attr/android:textAppearance" />
+
+        <TextView
+            android:id="@+id/tvNotifications"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:drawableStart="@drawable/drawable_notifications"
+            android:drawableEnd="@drawable/drawable_arrow"
+            android:drawablePadding="9.95dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/settings_notifications"
+            android:textAppearance="?android:attr/android:textAppearance" />
+
+        <TextView
+            android:id="@+id/tvDateAndTime"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:drawableStart="@drawable/drawable_time"
+            android:drawableEnd="@drawable/drawable_arrow"
+            android:drawablePadding="9.95dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/settings_date_and_time"
+            android:textAppearance="?android:attr/android:textAppearance" />
+
+        <TextView
+            android:id="@+id/tvBackupAndRestore"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:drawableStart="@drawable/drawable_backup"
+            android:drawableEnd="@drawable/drawable_arrow"
+            android:drawablePadding="9.95dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/settings_backup_and_restore"
+            android:textAppearance="?android:attr/android:textAppearance" />
+
+        <TextView
+            android:id="@+id/tvRate"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:drawableStart="@drawable/drawable_rate"
+            android:drawableEnd="@drawable/drawable_arrow"
+            android:drawablePadding="9.95dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/settings_rate"
+            android:textAppearance="?android:attr/android:textAppearance" />
+
+        <TextView
+            android:id="@+id/tvFeedback"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:drawableStart="@drawable/drawable_feedback"
+            android:drawableEnd="@drawable/drawable_arrow"
+            android:drawablePadding="9.95dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/settings_feedback"
+            android:textAppearance="?android:attr/android:textAppearance" />
+
+        <TextView
+            android:id="@+id/tvOtherApps"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:drawableStart="@drawable/drawable_app_store"
+            android:drawableEnd="@drawable/drawable_arrow"
+            android:drawablePadding="9.95dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/settings_other_apps"
+            android:textAppearance="?android:attr/android:textAppearance" />
+
+        <TextView
+            android:id="@+id/tvGitHub"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:drawableStart="@drawable/drawable_git_hub"
+            android:drawableEnd="@drawable/drawable_arrow"
+            android:drawablePadding="9.95dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/settings_git_hub"
+            android:visibility="gone"
+            android:textAppearance="?android:attr/android:textAppearance" />
+
+        <TextView
+            android:id="@+id/tvPrivacyPolicy"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:drawableStart="@drawable/drawable_privacy_policy"
+            android:drawableEnd="@drawable/drawable_arrow"
+            android:drawablePadding="9.95dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:visibility="gone"
+            android:paddingEnd="20dp"
+            android:text="@string/settings_privacy_policy"
+            android:textAppearance="?android:attr/android:textAppearance" />
+
+        <TextView
+            android:id="@+id/tvLicenses"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:drawableStart="@drawable/drawable_licenses"
+            android:drawableEnd="@drawable/drawable_arrow"
+            android:drawablePadding="9.95dp"
+            android:visibility="gone"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/settings_licenses"
+            android:textAppearance="?android:attr/android:textAppearance" />
+    </LinearLayout>
+</ScrollView>
