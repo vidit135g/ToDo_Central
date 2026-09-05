@@ -16,7 +16,7 @@
         android:marqueeRepeatLimit="marquee_forever"
         android:scrollHorizontally="true"
         android:singleLine="true"
-        android:textColor="?android:attr/android:textColorPrimary"
+        android:textColor="?android:attr/textColorPrimary"
         android:textSize="28sp"
         tools:text="@string/simple_todo_title" />
 </androidx.appcompat.widget.Toolbar>

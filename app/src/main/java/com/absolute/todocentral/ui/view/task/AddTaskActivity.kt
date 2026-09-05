@@ -1,7 +1,7 @@
 package com.absolute.todocentral.ui.view.task
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.absolute.todocentral.R
 import com.absolute.todocentral.data.models.Task
 import com.absolute.todocentral.service.alarm.AlarmHelper
@@ -9,7 +9,7 @@ import com.absolute.todocentral.ui.view.base.BaseTaskActivity
 import com.absolute.todocentral.utils.PreferenceHelper
 import com.absolute.todocentral.utils.toast
 import com.absolute.todocentral.vm.AddTaskViewModel
-import kotlinx.android.synthetic.main.activity_task_details.*
+
 import java.util.*
 
 class AddTaskActivity : BaseTaskActivity() {
@@ -58,5 +58,5 @@ class AddTaskActivity : BaseTaskActivity() {
         }
     }
 
-    override fun createViewModel() = ViewModelProviders.of(this).get(AddTaskViewModel(application)::class.java)
+    override fun createViewModel() = ViewModelProvider(this)[AddTaskViewModel::class.java]
 }

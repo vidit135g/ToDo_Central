@@ -15,7 +15,7 @@ import com.absolute.todocentral.ui.view.base.BaseActivity
 import com.absolute.todocentral.ui.view.settings.fragment.FragmentSettings
 import com.absolute.todocentral.ui.view.settings.fragment.FragmentUI
 import daio.io.dresscode.matchDressCode
-import kotlinx.android.synthetic.main.toolbar.*
+
 
 class SettingsActivity : BaseActivity() {
 

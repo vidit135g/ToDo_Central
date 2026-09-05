@@ -10,7 +10,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.absolute.todocentral.R
@@ -24,10 +24,14 @@ import com.absolute.todocentral.utils.visible
 import com.absolute.todocentral.vm.SearchTasksViewModel
 import daio.io.dresscode.dressCodeStyleId
 import daio.io.dresscode.matchDressCode
-import kotlinx.android.synthetic.main.activity_search.*
+
 import kotterknife.bindView
 
 class SearchActivity : BaseActivity(), SearchView.OnQueryTextListener {
+    val llEmptyView: View by bindView(R.id.llEmptyView)
+    val ivEmptyIllustration: View by bindView(R.id.ivEmptyIllustration)
+    val ivNotFound: View by bindView(R.id.ivNotFound)
+    val tvEmptyTitle: TextView by bindView(R.id.tvEmptyTitle)
     private val mRecyclerView: RecyclerView by bindView(R.id.rvSearchResultsList)
     private lateinit var mViewModel: SearchTasksViewModel
     private lateinit var mAdapter: RecyclerViewAdapter
@@ -82,7 +86,7 @@ class SearchActivity : BaseActivity(), SearchView.OnQueryTextListener {
         mAdapter.updateData(tasks)
     }
 
-    private fun createViewModel() = ViewModelProviders.of(this).get(SearchTasksViewModel(application)::class.java)
+    private fun createViewModel() = ViewModelProvider(this)[SearchTasksViewModel::class.java]
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.search, menu)

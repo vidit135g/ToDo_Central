@@ -7,9 +7,11 @@ import com.absolute.todocentral.R
 import com.absolute.todocentral.ui.view.base.BaseActivity
 import com.absolute.todocentral.utils.PreferenceHelper
 import daio.io.dresscode.matchDressCode
-import kotlinx.android.synthetic.main.activity_changelog.*
+import kotterknife.bindView
+import android.widget.Button
 
 class ChangelogActivity : BaseActivity() {
+    val btnConfirm: Button by bindView(R.id.btnConfirm)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

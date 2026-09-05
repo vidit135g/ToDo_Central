@@ -12,7 +12,7 @@ import com.absolute.todocentral.R
 import com.absolute.todocentral.ui.view.settings.fragment.base.BaseSettingsFragment
 import com.absolute.todocentral.utils.DeviceInfo
 import com.absolute.todocentral.utils.toast
-import kotlinx.android.synthetic.main.fragment_settings.*
+
 
 class FragmentSettings : Fragment() {
 
@@ -26,14 +26,14 @@ class FragmentSettings : Fragment() {
     }
 
     private fun initButtons() {
-        tvUI.setOnClickListener { openFragment(FragmentUI()) }
-        tvNotifications.setOnClickListener { openFragment(FragmentNotifications()) }
-        tvDateAndTime.setOnClickListener { openFragment(FragmentDateAndTime()) }
-        tvBackupAndRestore.setOnClickListener { openFragment(FragmentBackupAndRestore()) }
-        tvRate.setOnClickListener { rateThisApp() }
-        tvFeedback.setOnClickListener { sendFeedback() }
-        tvOtherApps.setOnClickListener { openUri(GOOGLE_PLAY_PAGE) }
-           }
+        view?.findViewById<View>(R.id.tvUI)?.setOnClickListener { openFragment(FragmentUI()) }
+        view?.findViewById<View>(R.id.tvNotifications)?.setOnClickListener { openFragment(FragmentNotifications()) }
+        view?.findViewById<View>(R.id.tvDateAndTime)?.setOnClickListener { openFragment(FragmentDateAndTime()) }
+        view?.findViewById<View>(R.id.tvBackupAndRestore)?.setOnClickListener { openFragment(FragmentBackupAndRestore()) }
+        view?.findViewById<View>(R.id.tvRate)?.setOnClickListener { rateThisApp() }
+        view?.findViewById<View>(R.id.tvFeedback)?.setOnClickListener { sendFeedback() }
+        view?.findViewById<View>(R.id.tvOtherApps)?.setOnClickListener { openUri(GOOGLE_PLAY_PAGE) }
+    }
 
     private fun openFragment(fragment: BaseSettingsFragment) =
             fragmentManager?.beginTransaction()?.replace(R.id.flFragmentContainer, fragment)?.addToBackStack(null)?.commit()

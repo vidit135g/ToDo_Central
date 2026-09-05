@@ -16,9 +16,17 @@ import com.absolute.todocentral.R
 import com.absolute.todocentral.service.alarm.AlarmReceiver
 import com.absolute.todocentral.ui.view.settings.fragment.base.BaseSettingsFragment
 import com.absolute.todocentral.utils.PreferenceHelper
-import kotlinx.android.synthetic.main.fragment_notifications.*
+import kotterknife.bindView
+import androidx.appcompat.widget.SwitchCompat
+import android.widget.TextView
 
 class FragmentNotifications : BaseSettingsFragment() {
+    val swGeneralNotification: SwitchCompat by bindView(R.id.swGeneralNotification)
+    val clGeneralNotification: View by bindView(R.id.clGeneralNotification)
+    val clNotificationSound: View by bindView(R.id.clNotificationSound)
+    val llNotifications: LinearLayout by bindView(R.id.llNotifications)
+    val tvNotificationSoundTitle: TextView by bindView(R.id.tvNotificationSoundTitle)
+    val tvNotificationSoundSummary: TextView by bindView(R.id.tvNotificationSoundSummary)
     private lateinit var mPreferenceHelper: PreferenceHelper
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

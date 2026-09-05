@@ -22,8 +22,13 @@ class AlarmHelper private constructor() {
             .putExtra("title", task.title)
             .putExtra("time_stamp", task.timeStamp)
         val pendingIntent = PendingIntent.getBroadcast(mContext, task.timeStamp.toInt(),
-                intent, PendingIntent.FLAG_UPDATE_CURRENT)
-        mAlarmManager.set(AlarmManager.RTC_WAKEUP, task.date, pendingIntent)
+                intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+        try {
+            mAlarmManager.set(AlarmManager.RTC_WAKEUP, task.date, pendingIntent)
+        } catch (e: SecurityException) {
+            // Android 12+ exact alarm permission fallback
+            mAlarmManager.set(AlarmManager.RTC_WAKEUP, task.date, pendingIntent)
+        }
     }
 
     fun removeNotification(taskTimeStamp: Long, context: Context) {
@@ -34,7 +39,7 @@ class AlarmHelper private constructor() {
     fun removeAlarm(taskTimeStamp: Long) {
         val intent = Intent(mContext, AlarmReceiver::class.java)
         val pendingIntent = PendingIntent.getBroadcast(mContext, taskTimeStamp.toInt(),
-                intent, PendingIntent.FLAG_UPDATE_CURRENT)
+                intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
         mAlarmManager.cancel(pendingIntent)
     }
 

@@ -6,10 +6,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.absolute.todocentral.R
 import com.absolute.todocentral.ui.dialogs.base.BaseDialogFragment
 import com.absolute.todocentral.utils.PreferenceHelper
-import kotlinx.android.synthetic.main.dialog_rate_this_app.*
 
 class RateThisAppDialogFragment : BaseDialogFragment() {
 
@@ -18,11 +18,14 @@ class RateThisAppDialogFragment : BaseDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initButtons()
+        initButtons(view)
     }
 
-    private fun initButtons() {
+    private fun initButtons(view: View) {
         val preferenceHelper = PreferenceHelper.getInstance()
+        val tvRate = view.findViewById<TextView>(R.id.tvRate)
+        val tvNeverShow = view.findViewById<TextView>(R.id.tvNeverShow)
+        val tvShowLater = view.findViewById<TextView>(R.id.tvShowLater)
 
         tvRate.setOnClickListener {
             preferenceHelper.putBoolean(PreferenceHelper.IS_NEED_TO_SHOW_RATE_DIALOG_LATER, false)
@@ -50,6 +53,6 @@ class RateThisAppDialogFragment : BaseDialogFragment() {
 
     private companion object {
         const val APP_PAGE_SHORT_LINK = "market://details?id="
-        const val APP_PAGE_LONG_LINK = "https://play.google.com/store/com/details?id="
+        const val APP_PAGE_LONG_LINK = "https://play.google.com/store/apps/details?id="
     }
 }

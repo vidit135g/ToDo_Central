@@ -10,9 +10,13 @@ import androidx.core.content.ContextCompat
 import com.absolute.todocentral.R
 import com.absolute.todocentral.ui.view.base.BaseActivity
 import daio.io.dresscode.matchDressCode
-import kotlinx.android.synthetic.main.activity_task_note.*
+import kotterknife.bindView
+import android.widget.EditText
+import android.widget.ScrollView
 
 class TaskNoteActivity : BaseActivity() {
+    val svTaskDetails: ScrollView by bindView(R.id.svTaskDetails)
+    val tvTaskNote: EditText by bindView(R.id.tvTaskNote)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +28,7 @@ class TaskNoteActivity : BaseActivity() {
     }
 
     private fun restoreData() {
-        val note = intent.getStringExtra("note")
+        val note = intent.getStringExtra("note") ?: ""
         if (note.isNotEmpty()) {
             tvTaskNote.apply {
                 setText(note)
@@ -42,7 +46,7 @@ class TaskNoteActivity : BaseActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.task_note_menu, menu)
 
-        menu.getItem(0).icon.apply {
+        menu.getItem(0).icon?.apply {
             mutate()
             setColorFilter(ContextCompat.getColor(this@TaskNoteActivity, R.color.blue),
                     PorterDuff.Mode.SRC_IN)

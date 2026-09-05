@@ -16,9 +16,12 @@ import com.absolute.todocentral.ui.view.base.BaseActivity.Companion.PERMISSION_R
 import com.absolute.todocentral.ui.view.settings.activity.SettingsActivity
 import com.absolute.todocentral.ui.view.settings.fragment.base.BaseSettingsFragment
 import com.absolute.todocentral.utils.toast
-import kotlinx.android.synthetic.main.fragment_backup_and_restore.*
+import kotterknife.bindView
 
 class FragmentBackupAndRestore : BaseSettingsFragment() {
+    val clCreateBackup: View by bindView(R.id.clCreateBackup)
+    val clRestoreBackup: View by bindView(R.id.clRestoreBackup)
+    val llBackupAndRestore: View by bindView(R.id.llBackupAndRestore)
     private var mIsCreatingProcess = false
     private lateinit var mSettingsActivity: SettingsActivity
 

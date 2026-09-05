@@ -3,7 +3,7 @@ package com.absolute.todocentral.ui.view.task
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.absolute.todocentral.R
 import com.absolute.todocentral.data.models.Task
 import com.absolute.todocentral.service.alarm.AlarmHelper
@@ -13,8 +13,8 @@ import com.absolute.todocentral.utils.DateAndTimeFormatter
 import com.absolute.todocentral.utils.toast
 import com.absolute.todocentral.utils.visible
 import com.absolute.todocentral.vm.EditTaskViewModel
-import kotlinx.android.synthetic.main.activity_task_details.*
-import kotlinx.android.synthetic.main.toolbar.*
+
+
 import java.util.*
 
 class EditTaskActivity : BaseTaskActivity() {
@@ -37,8 +37,8 @@ class EditTaskActivity : BaseTaskActivity() {
 
         // Get Intent data
         mId = intent.getLongExtra("id", 0)
-        mTitle = intent.getStringExtra("title")
-        mNote = intent.getStringExtra("note")
+        mTitle = intent.getStringExtra("title") ?: ""
+        mNote = intent.getStringExtra("note") ?: ""
         mDate = intent.getLongExtra("date", 0)
         mPosition = intent.getIntExtra("position", 0)
         mTimeStamp = intent.getLongExtra("time_stamp", 0)
@@ -92,7 +92,7 @@ class EditTaskActivity : BaseTaskActivity() {
 
     private fun showDeleteTaskDialog(task: Task) = DeleteTaskDialogFragment(task).show(supportFragmentManager, null)
 
-    override fun createViewModel() = ViewModelProviders.of(this).get(EditTaskViewModel(application)::class.java)
+    override fun createViewModel() = ViewModelProvider(this)[EditTaskViewModel::class.java]
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.edit_task_menu, menu)

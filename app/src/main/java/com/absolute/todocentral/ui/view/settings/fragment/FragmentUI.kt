@@ -11,9 +11,13 @@ import com.absolute.todocentral.R
 import com.absolute.todocentral.ui.view.settings.fragment.base.BaseSettingsFragment
 import com.absolute.todocentral.utils.PreferenceHelper
 import daio.io.dresscode.dressCodeStyleId
-import kotlinx.android.synthetic.main.fragment_user_interface.*
+import kotterknife.bindView
+import androidx.appcompat.widget.SwitchCompat
 
 class FragmentUI : BaseSettingsFragment() {
+    val swAnimation: SwitchCompat by bindView(R.id.swAnimation)
+    val clAnimations: View by bindView(R.id.clAnimations)
+    val clChooseTheme: View by bindView(R.id.clChooseTheme)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_user_interface, container, false)

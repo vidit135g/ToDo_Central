@@ -22,12 +22,20 @@ import com.absolute.todocentral.utils.visible
 import com.absolute.todocentral.vm.base.BaseViewModel
 import daio.io.dresscode.dressCodeStyleId
 import daio.io.dresscode.matchDressCode
-import kotlinx.android.synthetic.main.activity_task_details.*
+import android.widget.*
+import com.google.android.material.textfield.TextInputLayout
 import kotterknife.bindView
 import java.util.*
 
 abstract class BaseTaskActivity : BaseActivity(), DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
     val mTitleEditText: EditText by bindView(R.id.tvTaskTitle)
+    val tilTaskTitle: TextInputLayout by bindView(R.id.tilTaskTitle)
+    val tvTaskNote: TextView by bindView(R.id.tvTaskNote)
+    val tvTaskReminder: TextView by bindView(R.id.tvTaskReminder)
+    val ivDeleteTaskReminder: ImageView by bindView(R.id.ivDeleteTaskReminder)
+    val svTaskDetails: ScrollView by bindView(R.id.svTaskDetails)
+    val btnTaskConfirm: Button by bindView(R.id.btnTaskConfirm)
+    val ivTaskReminderIcon: ImageView by bindView(R.id.ivTaskReminderIcon)
     lateinit var mCalendar: Calendar
 
     override fun onCreate(savedInstanceState: Bundle?) {

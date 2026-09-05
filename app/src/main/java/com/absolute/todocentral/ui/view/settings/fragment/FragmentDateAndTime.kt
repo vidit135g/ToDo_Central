@@ -10,9 +10,11 @@ import com.absolute.todocentral.R
 import com.absolute.todocentral.ui.view.settings.fragment.base.BaseSettingsFragment
 import com.absolute.todocentral.utils.PreferenceHelper
 import daio.io.dresscode.dressCodeStyleId
-import kotlinx.android.synthetic.main.fragment_date_and_time.*
+import kotterknife.bindView
 
 class FragmentDateAndTime : BaseSettingsFragment() {
+    val clDateFormat: View by bindView(R.id.clDateFormat)
+    val clTimeFormat: View by bindView(R.id.clTimeFormat)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_date_and_time, container, false)

@@ -16,7 +16,7 @@ class WidgetProvider : AppWidgetProvider() {
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
 
         val onTitleClickPendingIntent = PendingIntent.getActivity(context, 0, Intent(context, MainActivity::class.java)
-                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP), PendingIntent.FLAG_UPDATE_CURRENT)
+                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP), PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
 
         for (appWidgetId in appWidgetIds) {
             val adapter = Intent(context, WidgetService::class.java)
@@ -27,7 +27,8 @@ class WidgetProvider : AppWidgetProvider() {
             widget.setRemoteAdapter(R.id.lvWidgetTasksList, adapter)
             widget.setOnClickPendingIntent(R.id.tvWidgetTitle, onTitleClickPendingIntent)
 
-            val onTaskClickPendingIntent = PendingIntent.getBroadcast(context, 0, Intent(context, WidgetProvider::class.java), 0)
+            val onTaskClickPendingIntent = PendingIntent.getBroadcast(context, 0, Intent(context, WidgetProvider::class.java),
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE)
             widget.setPendingIntentTemplate(R.id.lvWidgetTasksList, onTaskClickPendingIntent)
 
             appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.lvWidgetTasksList)
@@ -40,8 +41,8 @@ class WidgetProvider : AppWidgetProvider() {
         super.onReceive(context, intent)
 
         val itemID = intent.getLongExtra(ITEM_ID, 0)
-        val itemTitle = intent.getStringExtra(ITEM_TITLE)
-        val itemNote = intent.getStringExtra(ITEM_NOTE)
+        val itemTitle = intent.getStringExtra(ITEM_TITLE) ?: ""
+        val itemNote = intent.getStringExtra(ITEM_NOTE) ?: ""
         val itemPosition = intent.getIntExtra(ITEM_POSITION, -1)
         val itemTimeStamp = intent.getLongExtra(ITEM_TIME_STAMP, 0)
         val itemDate = intent.getLongExtra(ITEM_DATE, 0)

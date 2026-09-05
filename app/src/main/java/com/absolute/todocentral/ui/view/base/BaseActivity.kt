@@ -24,9 +24,12 @@ import com.absolute.todocentral.ui.view.task.EditTaskActivity
 import com.absolute.todocentral.utils.toastLong
 import com.google.android.material.snackbar.Snackbar
 import daio.io.dresscode.dressCodeStyleId
-import kotlinx.android.synthetic.main.toolbar.*
+import kotterknife.bindView
+import android.widget.TextView
 
 abstract class BaseActivity : AppCompatActivity() {
+    val toolbar: Toolbar? by bindView(R.id.toolbar)
+    val tvToolbarTitle: TextView by bindView(R.id.tvToolbarTitle)
 
     override fun onResume() {
         super.onResume()
@@ -60,9 +63,9 @@ abstract class BaseActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             when (dressCodeStyleId) {
                 R.style.AppTheme_Light -> {
-                    var flags = toolbar.systemUiVisibility
+                    var flags = toolbar?.systemUiVisibility ?: 0
                     flags = flags or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-                    toolbar.systemUiVisibility = flags
+                    toolbar?.systemUiVisibility = flags
                     this.window.statusBarColor = Color.WHITE
                 }
                 R.style.AppTheme_Dark -> ContextCompat.getColor(this, R.color.deepBlueGrey)
@@ -101,7 +104,7 @@ abstract class BaseActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             ValueAnimator.ofFloat(start, end).apply {
                 addUpdateListener { updatedAnimation ->
-                    toolbar.elevation = updatedAnimation.animatedValue as Float
+                    toolbar?.elevation = updatedAnimation.animatedValue as Float
                 }
                 duration = 500
                 start()

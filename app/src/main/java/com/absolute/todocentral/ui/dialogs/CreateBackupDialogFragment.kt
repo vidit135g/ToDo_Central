@@ -5,12 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProviders
+import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
 import com.absolute.todocentral.R
 import com.absolute.todocentral.ui.dialogs.base.BaseDialogFragment
 import com.absolute.todocentral.utils.toast
 import com.absolute.todocentral.vm.CreateBackupViewModel
-import kotlinx.android.synthetic.main.dialog_default.*
 
 class CreateBackupDialogFragment : BaseDialogFragment() {
     private lateinit var mViewModel: CreateBackupViewModel
@@ -21,10 +21,14 @@ class CreateBackupDialogFragment : BaseDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.let { mViewModel = createViewModel(it.application) }
-        initDialog()
+        initDialog(view)
     }
 
-    private fun initDialog() {
+    private fun initDialog(view: View) {
+        val tvDialogMessage = view.findViewById<TextView>(R.id.tvDialogMessage)
+        val tvConfirm = view.findViewById<TextView>(R.id.tvConfirm)
+        val tvCancel = view.findViewById<TextView>(R.id.tvCancel)
+
         tvDialogMessage.setText(R.string.backup_create_dialog_message)
         tvConfirm.setText(R.string.backup_create_dialog_button)
         tvConfirm.setOnClickListener { createBackup() }
@@ -43,5 +47,5 @@ class CreateBackupDialogFragment : BaseDialogFragment() {
         }
     }
 
-    private fun createViewModel(application: Application) = ViewModelProviders.of(this).get(CreateBackupViewModel(application)::class.java)
+    private fun createViewModel(application: Application) = ViewModelProvider(this)[CreateBackupViewModel::class.java]
 }
