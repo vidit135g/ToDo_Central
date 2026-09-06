@@ -1,33 +1,26 @@
 package com.absolute.todocentral.vm
 
 import android.app.Application
-import android.os.Environment
+import android.net.Uri
 import com.absolute.todocentral.vm.base.BaseViewModel
-import java.io.File
-import java.io.FileOutputStream
 import java.io.IOException
 import java.io.ObjectOutputStream
 
 class CreateBackupViewModel(val app: Application) : BaseViewModel(app) {
-    private val mFile = File(Environment.getExternalStoragePublicDirectory("SimpleToDo"), "Backup.ser")
     private var isCreatedSuccessfully = false
 
     fun isBackupCreatedSuccessfully() = isCreatedSuccessfully
 
-    fun createBackup() {
+    fun createBackup(uri: Uri) {
         val tasks = repository.getAllTasks()
-        val file = File(Environment.getExternalStorageDirectory().absolutePath, "SimpleToDo")
-        if (!file.exists()) file.mkdir()
         isCreatedSuccessfully = try {
-            mFile.delete()
-
-            val fileOutputStream = FileOutputStream(mFile, true)
+            val fileOutputStream = app.contentResolver.openOutputStream(uri)
             val objectOutputStream = ObjectOutputStream(fileOutputStream)
 
             objectOutputStream.writeObject(tasks)
             objectOutputStream.close()
             true
-        } catch (e: IOException) {
+        } catch (e: Exception) {
             e.printStackTrace()
             false
         }

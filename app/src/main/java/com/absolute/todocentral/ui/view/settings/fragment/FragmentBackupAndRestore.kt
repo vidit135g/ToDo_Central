@@ -1,29 +1,28 @@
 package com.absolute.todocentral.ui.view.settings.fragment
 
-import android.Manifest
-import android.content.pm.PackageManager
-import android.os.Build
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.absolute.todocentral.R
-import com.absolute.todocentral.ui.dialogs.CreateBackupDialogFragment
-import com.absolute.todocentral.ui.dialogs.RestoreBackupDialogFragment
-import com.absolute.todocentral.ui.dialogs.base.BaseDialogFragment
-import com.absolute.todocentral.ui.view.base.BaseActivity
-import com.absolute.todocentral.ui.view.base.BaseActivity.Companion.PERMISSION_REQUEST_CODE
 import com.absolute.todocentral.ui.view.settings.activity.SettingsActivity
 import com.absolute.todocentral.ui.view.settings.fragment.base.BaseSettingsFragment
 import com.absolute.todocentral.utils.toast
+import com.absolute.todocentral.vm.CreateBackupViewModel
+import com.absolute.todocentral.vm.RestoreBackupViewModel
 import kotterknife.bindView
 
 class FragmentBackupAndRestore : BaseSettingsFragment() {
     val clCreateBackup: View by bindView(R.id.clCreateBackup)
     val clRestoreBackup: View by bindView(R.id.clRestoreBackup)
-    val llBackupAndRestore: View by bindView(R.id.llBackupAndRestore)
-    private var mIsCreatingProcess = false
     private lateinit var mSettingsActivity: SettingsActivity
+
+    private val CREATE_BACKUP_REQUEST = 101
+    private val RESTORE_BACKUP_REQUEST = 102
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_backup_and_restore, container, false)
@@ -40,68 +39,46 @@ class FragmentBackupAndRestore : BaseSettingsFragment() {
         setOnClickListeners()
     }
 
-    private fun showDialog(dialog: BaseDialogFragment) = activity?.let { dialog.show(it.supportFragmentManager, null) }
-
     private fun setOnClickListeners() {
         clCreateBackup.setOnClickListener {
-            mIsCreatingProcess = true
-
-            if (mSettingsActivity.isHasPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                showDialog(CreateBackupDialogFragment())
-            } else {
-                requestPermissionWithRationale()
+            val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
+                addCategory(Intent.CATEGORY_OPENABLE)
+                type = "application/octet-stream"
+                putExtra(Intent.EXTRA_TITLE, "Backup.ser")
             }
+            startActivityForResult(intent, CREATE_BACKUP_REQUEST)
         }
 
         clRestoreBackup.setOnClickListener {
-            if (mSettingsActivity.isHasPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                showDialog(RestoreBackupDialogFragment())
-            } else {
-                requestPermissionWithRationale()
+            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+                addCategory(Intent.CATEGORY_OPENABLE)
+                type = "application/octet-stream"
             }
+            startActivityForResult(intent, RESTORE_BACKUP_REQUEST)
         }
     }
 
-    private fun requestPermissionWithRationale() =
-        mSettingsActivity.requestPermissionWithRationale(llBackupAndRestore,
-                getString(R.string.permission_storage_snackbar_with_rationale),
-                Manifest.permission.WRITE_EXTERNAL_STORAGE, object : BaseActivity.PermissionRequestListener {
-                    override fun onPermissionRequest() = mSettingsActivity.requestPerms(Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                            this@FragmentBackupAndRestore)
-                })
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        var isAllowed = true
-
-        when (requestCode) {
-            PERMISSION_REQUEST_CODE -> {
-                for (res in grantResults) {
-                    // If user granted all permissions.
-                    isAllowed = isAllowed && res == PackageManager.PERMISSION_GRANTED
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && data != null && data.data != null) {
+            val uri = data.data!!
+            if (requestCode == CREATE_BACKUP_REQUEST) {
+                val vm = ViewModelProvider(this)[CreateBackupViewModel::class.java]
+                vm.createBackup(uri)
+                if (vm.isBackupCreatedSuccessfully()) {
+                    toast(getString(R.string.backup_create_message_success))
+                } else {
+                    toast(getString(R.string.backup_create_message_failure))
+                }
+            } else if (requestCode == RESTORE_BACKUP_REQUEST) {
+                val vm = ViewModelProvider(this)[RestoreBackupViewModel::class.java]
+                vm.restoreBackup(uri)
+                if (vm.isBackupRestoredSuccessfully()) {
+                    toast(getString(R.string.backup_restore_message_success))
+                } else {
+                    toast(getString(R.string.backup_restore_message_failure))
                 }
             }
-
-            else -> {
-                // If user not granted permissions.
-                isAllowed = false
-            }
         }
-
-        if (isAllowed) {
-            if (mIsCreatingProcess) {
-                showDialog(CreateBackupDialogFragment())
-            } else {
-                showDialog(RestoreBackupDialogFragment())
-            }
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                toast(getString(R.string.permission_storage_denied_toast))
-            } else {
-                mSettingsActivity.showNoPermissionSnackbar(llBackupAndRestore,
-                        getString(R.string.permission_storage_snackbar_no_permission),
-                        getString(R.string.permission_storage_toast))
-            }
-        }
-        mIsCreatingProcess = false
     }
 }
