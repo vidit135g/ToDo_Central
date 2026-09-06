@@ -26,8 +26,9 @@
                 style="@style/TextInputLayoutOutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp"
                 android:hint="@string/hint_title"
                 app:hintTextColor="#4a4a4a"
                 app:errorEnabled="true">
@@ -36,70 +37,72 @@
                     android:id="@+id/tvTaskTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/product_sans"
                     android:inputType="textAutoCorrect|textCapSentences"
                     android:textColor="@color/gblue"
-                    android:textSize="21sp" />
+                    android:textSize="20sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.card.MaterialCardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            <!-- Bento Note Card -->
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvTaskNote"
-                style="@style/TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tilTaskTitle"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
                 app:cardElevation="0dp"
-                app:strokeColor="@color/greyWhite"
-                card_view:cardBackgroundColor="?attr/colorBackground"
-                card_view:cardCornerRadius="5dp"
-                card_view:contentPadding="16dp"
-                card_view:strokeWidth="1dp">
+                app:cardCornerRadius="16dp"
+                app:cardBackgroundColor="@color/white"
+                app:strokeColor="@color/bento_card_stroke"
+                app:strokeWidth="1dp">
 
                 <TextView
                     android:id="@+id/tvTaskNote"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="16dp"
                     android:ellipsize="end"
                     android:focusableInTouchMode="false"
                     android:hint="@string/hint_note"
                     android:maxLines="7"
+                    android:fontFamily="@font/product_sans"
                     android:textColor="?android:attr/textColorPrimary"
-                    android:textColorHint="#4a4a4a"
-                    android:textSize="19sp" />
+                    android:textColorHint="#8E8E93"
+                    android:textSize="17sp" />
             </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            <!-- Bento Reminder Card -->
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvTaskReminder"
-                style="@style/TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cvTaskNote"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="84dp"
                 app:cardElevation="0dp"
-                app:strokeColor="@color/greyWhite"
-                card_view:cardBackgroundColor="?attr/colorBackground"
-                card_view:cardCornerRadius="30dp"
-                card_view:contentPaddingBottom="16dp"
-                card_view:contentPaddingTop="16dp"
-                card_view:strokeWidth="1dp">
+                app:cardCornerRadius="16dp"
+                app:cardBackgroundColor="@color/white"
+                app:strokeColor="@color/bento_card_stroke"
+                app:strokeWidth="1dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/cvTaskNote">
+                    android:paddingStart="16dp"
+                    android:paddingTop="14dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="14dp">
 
                     <ImageView
                         android:id="@+id/ivTaskReminderIcon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="16dp"
                         android:src="@drawable/drawable_reminder" />
 
                     <TextView
@@ -107,23 +110,23 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="8dp"
                         android:layout_toStartOf="@id/ivDeleteTaskReminder"
                         android:layout_toEndOf="@id/ivTaskReminderIcon"
                         android:focusableInTouchMode="false"
                         android:hint="@string/hint_reminder"
+                        android:fontFamily="@font/product_sans"
                         android:textColor="?android:attr/textColorPrimary"
-                        android:textColorHint="#4a4a4a"
-                        android:textSize="19sp" />
+                        android:textColorHint="#8E8E93"
+                        android:textSize="17sp" />
 
                     <ImageView
                         android:id="@+id/ivDeleteTaskReminder"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginEnd="16dp"
                         android:background="?attr/selectableItemBackgroundBorderless"
                         android:src="@drawable/round_close_black_24"
                         android:visibility="gone" />
@@ -134,19 +137,20 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnTaskConfirm"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="40dp"
-        android:padding="20dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="16dp"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:background="@drawable/button_gradient_background"
-        android:text="Create new task"
-        android:textStyle="bold"
+        android:padding="16dp"
+        app:cornerRadius="16dp"
+        app:strokeWidth="1dp"
         app:strokeColor="@color/gblue"
+        android:text="Create new task"
+        android:fontFamily="@font/product_sans"
         android:textAllCaps="false"
         android:textColor="@color/gblue"
         android:textSize="16sp"/>

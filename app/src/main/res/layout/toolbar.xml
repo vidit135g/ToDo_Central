@@ -1,8 +1,11 @@
 <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
+    app:elevation="0dp"
+    android:elevation="0dp"
     android:background="?attr/colorToolbar">
 
     <TextView
@@ -16,7 +19,8 @@
         android:marqueeRepeatLimit="marquee_forever"
         android:scrollHorizontally="true"
         android:singleLine="true"
+        android:fontFamily="@font/product_sans"
         android:textColor="?android:attr/textColorPrimary"
-        android:textSize="28sp"
+        android:textSize="24sp"
         tools:text="@string/simple_todo_title" />
 </androidx.appcompat.widget.Toolbar>
