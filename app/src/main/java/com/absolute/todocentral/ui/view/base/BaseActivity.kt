@@ -17,13 +17,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.absolute.todocentral.R
 import com.absolute.todocentral.data.models.Task
 import com.absolute.todocentral.ui.view.task.EditTaskActivity
 import com.absolute.todocentral.utils.toastLong
 import com.google.android.material.snackbar.Snackbar
-import daio.io.dresscode.dressCodeStyleId
 import kotterknife.bindView
 import android.widget.TextView
 
@@ -36,20 +38,67 @@ abstract class BaseActivity : AppCompatActivity() {
         initStatusBar()
     }
 
+
+    /**
+     * Draws the app edge to edge and hands the system-bar insets to the
+     * caller as padding.
+     *
+     * targetSdk 35 forces edge-to-edge on Android 15+, so this is opted into
+     * explicitly instead: the same code path then runs on every supported
+     * release, which means the behaviour shipping to Android 15 is the one
+     * that can actually be tested here.
+     */
+    /**
+     * Shifts the whole screen clear of the system bars — what the window used
+     * to do before targetSdk 35 forced edge-to-edge. Screens that should
+     * genuinely scroll under the bars use [applyEdgeToEdge] instead.
+     */
+    fun insetContentRoot() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val root = findViewById<View>(android.R.id.content)
+        val top = root.paddingTop
+        val bottom = root.paddingBottom
+        ViewCompat.setOnApplyWindowInsetsListener(root) { v, insets ->
+            val bars = insets.getInsets(
+                    WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.ime())
+            v.setPadding(v.paddingLeft, top + bars.top, v.paddingRight, bottom + bars.bottom)
+            insets
+        }
+    }
+
+    fun applyEdgeToEdge(root: View, padTop: View? = null, padBottom: View? = null,
+                        also: ((Int, Int) -> Unit)? = null) {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val topStart = padTop?.paddingTop ?: 0
+        val bottomStart = padBottom?.paddingBottom ?: 0
+        ViewCompat.setOnApplyWindowInsetsListener(root) { _, insets ->
+            val bars = insets.getInsets(
+                    WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout())
+            padTop?.setPadding(padTop.paddingLeft, topStart + bars.top,
+                    padTop.paddingRight, padTop.paddingBottom)
+            padBottom?.setPadding(padBottom.paddingLeft, padBottom.paddingTop,
+                    padBottom.paddingRight, bottomStart + bars.bottom)
+            also?.invoke(bars.top, bars.bottom)
+            insets
+        }
+    }
+
     fun initToolbar(titleText: String = "", drawable: Int? = R.drawable.round_arrow_back_black_24, view: Toolbar? = toolbar) {
         title = ""
         tvToolbarTitle.text = titleText
 
+        // Under edge-to-edge these screens would sit beneath the status bar.
+        // The inset goes on the content root, not the toolbar: a Toolbar's
+        // height is fixed at actionBarSize, so padding it pushes the title
+        // out of its own bounds instead of moving the screen down.
+        if (view != null) insetContentRoot()
+
         if (toolbar != null) {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-                val color = when (dressCodeStyleId) {
-                    R.style.AppTheme_Light -> R.color.greyWhite
-                    R.style.AppTheme_Dark -> R.color.deepBlueGrey
-                    R.style.AppTheme_Black -> R.color.black
-                    else -> R.color.greyWhite
-                }
+                // Pre-M cannot use the theme's windowLightStatusBar, so paint
+                // the bar with the active period's own ground colour.
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-                window.statusBarColor = ContextCompat.getColor(this, color)
+                window.statusBarColor = resolveThemeColor(R.attr.somaBg)
             }
             setSupportActionBar(view)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -59,19 +108,21 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * The Soma period themes set statusBarColor and windowLightStatusBar
+     * themselves, so on M+ there is nothing left to do here. Previously this
+     * branched on the DressCode style id, which no longer exists.
+     */
     private fun initStatusBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            when (dressCodeStyleId) {
-                R.style.AppTheme_Light -> {
-                    var flags = toolbar?.systemUiVisibility ?: 0
-                    flags = flags or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-                    toolbar?.systemUiVisibility = flags
-                    this.window.statusBarColor = Color.WHITE
-                }
-                R.style.AppTheme_Dark -> ContextCompat.getColor(this, R.color.deepBlueGrey)
-                R.style.AppTheme_Black -> ContextCompat.getColor(this, R.color.black)
-            }
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            window.statusBarColor = resolveThemeColor(R.attr.somaBg)
         }
+    }
+
+    protected fun resolveThemeColor(attr: Int): Int {
+        val tv = android.util.TypedValue()
+        theme.resolveAttribute(attr, tv, true)
+        return tv.data
     }
 
     private fun openApplicationSettings() =

@@ -1,58 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+  A task as a rounded card: tick circle, title over its time, and a round
+  open button. Cards sit in a gapped column, so there is no divider.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="14dp"
-    android:layout_marginEnd="14dp"
-    android:layout_marginTop="5dp"
-    android:layout_marginBottom="5dp"
-    android:clickable="true"
-    android:focusable="true"
-    android:foreground="?android:attr/selectableItemBackground"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="0dp"
-    app:cardBackgroundColor="@color/white"
-    app:strokeColor="@color/bento_card_stroke"
-    app:strokeWidth="1dp">
+    android:paddingStart="@dimen/gutter"
+    android:paddingEnd="@dimen/gutter"
+    android:paddingBottom="10dp">
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/llTaskCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="16dp"
-        android:paddingTop="14dp"
-        android:paddingEnd="16dp"
-        android:paddingBottom="14dp">
+        android:minHeight="66dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:baselineAligned="false"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/bg_lav_card"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp">
 
-        <TextView
-            android:id="@+id/tvTaskTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_marginEnd="10dp"
-            android:layout_toStartOf="@id/ivTaskNote"
-            android:fontFamily="@font/product_sans"
-            android:textColor="@color/black"
-            android:textSize="17sp" />
+        <FrameLayout
+            android:id="@+id/flCheck"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackgroundBorderless">
 
-        <TextView
-            android:id="@+id/tvTaskDate"
-            android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/ivCheck"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/cd_toggle_complete" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvTaskTitle"
-            android:layout_marginTop="6dp"
-            android:fontFamily="@font/product_sans"
-            android:textColor="@color/blue"
-            android:textSize="13sp" />
+            android:layout_weight="1"
+            android:layout_marginStart="2dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTaskTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="?attr/somaTextP"
+                android:textSize="@dimen/text_body"
+                android:lineSpacingMultiplier="1.1" />
+
+            <TextView
+                android:id="@+id/tvTaskNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="?attr/somaTextM"
+                android:textSize="@dimen/text_caption"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/llTaskMeta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:baselineAligned="false">
+
+                <TextView
+                    android:id="@+id/tvTaskDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textColor="?attr/somaTextS"
+                    android:textSize="@dimen/text_caption"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/ivRepeat"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginStart="7dp"
+                    android:src="@drawable/ic_soma_repeat"
+                    app:tint="?attr/somaTextM"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvSubtaskProgress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="9dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="?attr/somaTextM"
+                    android:textSize="@dimen/text_caption"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/ivTaskNote"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <ImageView
-            android:id="@+id/ivTaskNote"
-            style="@style/IconTintGrey"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/round_notes_black_24"
+            android:id="@+id/ivStar"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:padding="9dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_soma_star_off"
+            android:contentDescription="@string/cd_toggle_star" />
+
+        <FrameLayout
+            android:id="@+id/flOpen"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="2dp"
+            android:background="@drawable/bg_lav_circle_light">
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_lav_arrow_out"
+                app:tint="?attr/somaPrimary"
+                android:contentDescription="@string/cd_open_task" />
+
+        </FrameLayout>
+
+        <View
+            android:id="@+id/vDivider"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:visibility="gone" />
-    </RelativeLayout>
-</com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -2,7 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <color name="lightBlueGrey">#1e2c37</color>
     <color name="deepBlueGrey">#17242d</color>
-    <color name="blue">#2373fc</color>
+    <color name="blue">#7C4DE0</color>
     <color name="purple">#6812cb</color>
     <color name="red">#F44336</color>
     <color name="white">#FFFFFF</color>
@@ -19,7 +19,7 @@
     <color name="gblack">#000</color>
     <color name="gred">#DB4437</color>
     <color name="ggreen">#0F9D58</color>
-    <color name="gblue">#4285f4</color>
+    <color name="gblue">#7C4DE0</color>
     <color name="gyellow"> #F4B400</color>
     <color name="gpink">#d81b60</color>
     <color name="ggray">#424242</color>

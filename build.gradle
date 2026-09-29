@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlinVersion = '1.9.24'
+    ext.kotlinVersion = '2.1.20'
 
     repositories {
         google()
@@ -9,8 +9,11 @@ buildscript {
 
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-        classpath 'com.android.tools.build:gradle:8.4.2'
+        classpath 'com.android.tools.build:gradle:8.10.1'
         classpath 'com.google.gms:google-services:4.4.2'
+        // Room's annotation processor runs through KSP now: kapt does not work
+        // on Kotlin 2.x here, and KSP is the supported path anyway.
+        classpath 'com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:2.1.20-2.0.1'
     }
 }
 
@@ -24,12 +27,12 @@ allprojects {
 
 ext {
     // Sdk, tools and version
-    compileSdkVersion = 34
+    compileSdkVersion = 36
     buildToolsVersion = '34.0.0'
-    minSdkVersion = 21
-    targetSdkVersion = 34
-    versionCode = 1
-    versionName = "1.0"
+    minSdkVersion = 23
+    targetSdkVersion = 36
+    versionCode = 2
+    versionName = "1.1"
 }
 
 task clean(type: Delete) {

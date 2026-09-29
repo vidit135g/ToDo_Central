@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      Soma design-system tokens beyond the standard Material color roles.
+      Every dosha-period theme (styles_soma.xml) sets all of these; layouts
+      reference them as ?attr/somaXxx so the whole app re-themes when the
+      active period changes.
+    -->
+    <attr name="somaBg" format="color" />
+    <attr name="somaElev" format="color" />
+    <attr name="somaSurf" format="color" />
+    <attr name="somaMuted" format="color" />
+    <attr name="somaStrong" format="color" />
+    <attr name="somaTextP" format="color" />
+    <attr name="somaTextS" format="color" />
+    <attr name="somaTextM" format="color" />
+    <attr name="somaBorder" format="color" />
+    <attr name="somaBorderSub" format="color" />
+    <attr name="somaPrimary" format="color" />
+    <attr name="somaPrimaryPressed" format="color" />
+    <attr name="somaSecondary" format="color" />
+    <attr name="somaAccent" format="color" />
+    <attr name="somaOnFill" format="color" />
+
+    <!-- Accent surfaces for the at-a-glance tiles. These are deliberately a
+         different hue from the period's own ground so the bento row reads as
+         distinct tiles rather than one flat field (see the reference mockup's
+         sage/amber pair). Every period defines its own version. -->
+    <attr name="somaTileCalm" format="color" />
+    <attr name="somaTileCalmStroke" format="color" />
+    <attr name="somaTileWarm" format="color" />
+    <attr name="somaTileWarmStroke" format="color" />
+</resources>

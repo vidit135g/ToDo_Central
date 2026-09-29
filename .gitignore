@@ -8,3 +8,10 @@
 /captures
 .externalNativeBuild
 /app/google-services.json
+
+# Build outputs and generated reports
+/app/build
+*.aab
+*.apk
+app/lint-report.txt
+lint-report.txt

@@ -6,7 +6,7 @@
     android:layout_height="?attr/actionBarSize"
     app:elevation="0dp"
     android:elevation="0dp"
-    android:background="?attr/colorToolbar">
+    android:background="?attr/somaBg">
 
     <TextView
         android:id="@+id/tvToolbarTitle"
@@ -19,8 +19,9 @@
         android:marqueeRepeatLimit="marquee_forever"
         android:scrollHorizontally="true"
         android:singleLine="true"
-        android:fontFamily="@font/product_sans"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="24sp"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="?attr/somaTextP"
+        android:textSize="22sp"
+        android:letterSpacing="-0.015"
         tools:text="@string/simple_todo_title" />
 </androidx.appcompat.widget.Toolbar>

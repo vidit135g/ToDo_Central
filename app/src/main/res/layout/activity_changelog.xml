@@ -1,50 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- What's new. Each entry is its own card rather than two centred blocks of
+     20sp text floating in the middle of an empty screen. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorBackground"
+    android:orientation="vertical"
+    android:background="?attr/somaBg"
     tools:context=".ui.view.ChangelogActivity">
 
     <include layout="@layout/toolbar" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/gutter"
+        android:paddingEnd="@dimen/gutter">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:text="@string/whats_new_item_1_text"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textSize="20sp" />
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:text="@string/whats_new_item_2_text"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textSize="20sp" />
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/changelog_headline"
+                android:fontFamily="@font/poppins_extrabold"
+                android:textColor="?attr/somaTextP"
+                android:textSize="@dimen/text_display"
+                android:lineSpacingMultiplier="1.05"
+                android:letterSpacing="-0.02" />
 
-    <androidx.appcompat.widget.AppCompatButton
+            <LinearLayout
+                style="@style/LavGroupCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:padding="18dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/whats_new_item_1_text"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="?attr/somaTextP"
+                    android:textSize="@dimen/text_body"
+                    android:lineSpacingMultiplier="1.35" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LavGroupCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="18dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/whats_new_item_2_text"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="?attr/somaTextP"
+                    android:textSize="@dimen/text_body"
+                    android:lineSpacingMultiplier="1.35" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
         android:id="@+id/btnConfirm"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/button_gradient_background"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginStart="@dimen/gutter"
+        android:layout_marginEnd="@dimen/gutter"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:background="@drawable/bg_lav_cta"
+        android:clickable="true"
+        android:focusable="true"
         android:text="@string/whats_new_button_text"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-</RelativeLayout>
+        android:fontFamily="@font/poppins_extrabold"
+        android:textColor="?attr/somaOnFill"
+        android:textSize="@dimen/text_body" />
+</LinearLayout>

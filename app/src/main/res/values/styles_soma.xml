@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Soma dosha-period themes, ported from Notes Central so the two apps
+         read as one family. Each period also fills this app's own colour
+         attrs (colorToolbar, colorBackground, ...) so the existing screens
+         re-theme without being rewritten. -->
+
+    <style name="AppTheme.SomaBase.Light" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="fontFamily">@font/poppins_semibold</item>
+        <item name="android:windowBackground">?attr/somaBg</item>
+        <item name="android:statusBarColor">?attr/somaBg</item>
+        <item name="android:navigationBarColor">?attr/somaElev</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+        <item name="colorControlNormal">?attr/somaTextM</item>
+        <item name="alertDialogTheme">@style/LavDialog</item>
+        <item name="materialAlertDialogTheme">@style/LavDialog</item>
+    </style>
+
+    <style name="AppTheme.SomaBase.Dark" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="fontFamily">@font/poppins_semibold</item>
+        <item name="android:windowBackground">?attr/somaBg</item>
+        <item name="android:statusBarColor">?attr/somaBg</item>
+        <item name="android:navigationBarColor">?attr/somaElev</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
+        <item name="colorControlNormal">?attr/somaTextM</item>
+        <item name="alertDialogTheme">@style/LavDialog</item>
+        <item name="materialAlertDialogTheme">@style/LavDialog</item>
+    </style>
+
+    <style name="AppTheme.Soma.VataDawn" parent="AppTheme.SomaBase.Dark">
+        <item name="colorPrimary">@color/soma_vataDawn_primary</item>
+        <item name="colorPrimaryDark">@color/soma_vataDawn_primaryPressed</item>
+        <item name="colorAccent">@color/soma_vataDawn_accent</item>
+        <item name="colorSurface">@color/soma_vataDawn_elev</item>
+        <item name="android:colorBackground">@color/soma_vataDawn_bg</item>
+        <item name="android:textColorPrimary">@color/soma_vataDawn_textP</item>
+        <item name="android:textColorSecondary">@color/soma_vataDawn_textS</item>
+        <item name="android:textColorHint">@color/soma_vataDawn_textM</item>
+        <item name="somaBg">@color/soma_vataDawn_bg</item>
+        <item name="somaElev">@color/soma_vataDawn_elev</item>
+        <item name="somaSurf">@color/soma_vataDawn_surf</item>
+        <item name="somaMuted">@color/soma_vataDawn_muted</item>
+        <item name="somaStrong">@color/soma_vataDawn_strong</item>
+        <item name="somaTextP">@color/soma_vataDawn_textP</item>
+        <item name="somaTextS">@color/soma_vataDawn_textS</item>
+        <item name="somaTextM">@color/soma_vataDawn_textM</item>
+        <item name="somaBorder">@color/soma_vataDawn_border</item>
+        <item name="somaBorderSub">@color/soma_vataDawn_borderSub</item>
+        <item name="somaPrimary">@color/soma_vataDawn_primary</item>
+        <item name="somaPrimaryPressed">@color/soma_vataDawn_primaryPressed</item>
+        <item name="somaSecondary">@color/soma_vataDawn_secondary</item>
+        <item name="somaAccent">@color/soma_vataDawn_accent</item>
+        <item name="somaOnFill">@color/soma_vataDawn_onFill</item>
+        <item name="somaTileCalm">@color/soma_vataDawn_tileCalm</item>
+        <item name="somaTileCalmStroke">@color/soma_vataDawn_tileCalmStroke</item>
+        <item name="somaTileWarm">@color/soma_vataDawn_tileWarm</item>
+        <item name="somaTileWarmStroke">@color/soma_vataDawn_tileWarmStroke</item>
+        <item name="colorToolbar">@color/soma_vataDawn_bg</item>
+        <item name="colorDrawable">@color/soma_vataDawn_textS</item>
+        <item name="colorSearchView">@color/soma_vataDawn_elev</item>
+        <item name="colorBackground">@color/soma_vataDawn_bg</item>
+        <item name="colorBottomAppBar">@color/soma_vataDawn_elev</item>
+        <item name="colorDialogBackground">@color/soma_vataDawn_elev</item>
+    </style>
+
+    <style name="AppTheme.Soma.KaphaAm" parent="AppTheme.SomaBase.Light">
+        <item name="colorPrimary">@color/soma_kaphaAm_primary</item>
+        <item name="colorPrimaryDark">@color/soma_kaphaAm_primaryPressed</item>
+        <item name="colorAccent">@color/soma_kaphaAm_accent</item>
+        <item name="colorSurface">@color/soma_kaphaAm_elev</item>
+        <item name="android:colorBackground">@color/soma_kaphaAm_bg</item>
+        <item name="android:textColorPrimary">@color/soma_kaphaAm_textP</item>
+        <item name="android:textColorSecondary">@color/soma_kaphaAm_textS</item>
+        <item name="android:textColorHint">@color/soma_kaphaAm_textM</item>
+        <item name="somaBg">@color/soma_kaphaAm_bg</item>
+        <item name="somaElev">@color/soma_kaphaAm_elev</item>
+        <item name="somaSurf">@color/soma_kaphaAm_surf</item>
+        <item name="somaMuted">@color/soma_kaphaAm_muted</item>
+        <item name="somaStrong">@color/soma_kaphaAm_strong</item>
+        <item name="somaTextP">@color/soma_kaphaAm_textP</item>
+        <item name="somaTextS">@color/soma_kaphaAm_textS</item>
+        <item name="somaTextM">@color/soma_kaphaAm_textM</item>
+        <item name="somaBorder">@color/soma_kaphaAm_border</item>
+        <item name="somaBorderSub">@color/soma_kaphaAm_borderSub</item>
+        <item name="somaPrimary">@color/soma_kaphaAm_primary</item>
+        <item name="somaPrimaryPressed">@color/soma_kaphaAm_primaryPressed</item>
+        <item name="somaSecondary">@color/soma_kaphaAm_secondary</item>
+        <item name="somaAccent">@color/soma_kaphaAm_accent</item>
+        <item name="somaOnFill">@color/soma_kaphaAm_onFill</item>
+        <item name="somaTileCalm">@color/soma_kaphaAm_tileCalm</item>
+        <item name="somaTileCalmStroke">@color/soma_kaphaAm_tileCalmStroke</item>
+        <item name="somaTileWarm">@color/soma_kaphaAm_tileWarm</item>
+        <item name="somaTileWarmStroke">@color/soma_kaphaAm_tileWarmStroke</item>
+        <item name="colorToolbar">@color/soma_kaphaAm_bg</item>
+        <item name="colorDrawable">@color/soma_kaphaAm_textS</item>
+        <item name="colorSearchView">@color/soma_kaphaAm_elev</item>
+        <item name="colorBackground">@color/soma_kaphaAm_bg</item>
+        <item name="colorBottomAppBar">@color/soma_kaphaAm_elev</item>
+        <item name="colorDialogBackground">@color/soma_kaphaAm_elev</item>
+    </style>
+
+    <style name="AppTheme.Soma.PittaDay" parent="AppTheme.SomaBase.Light">
+        <item name="colorPrimary">@color/soma_pittaDay_primary</item>
+        <item name="colorPrimaryDark">@color/soma_pittaDay_primaryPressed</item>
+        <item name="colorAccent">@color/soma_pittaDay_accent</item>
+        <item name="colorSurface">@color/soma_pittaDay_elev</item>
+        <item name="android:colorBackground">@color/soma_pittaDay_bg</item>
+        <item name="android:textColorPrimary">@color/soma_pittaDay_textP</item>
+        <item name="android:textColorSecondary">@color/soma_pittaDay_textS</item>
+        <item name="android:textColorHint">@color/soma_pittaDay_textM</item>
+        <item name="somaBg">@color/soma_pittaDay_bg</item>
+        <item name="somaElev">@color/soma_pittaDay_elev</item>
+        <item name="somaSurf">@color/soma_pittaDay_surf</item>
+        <item name="somaMuted">@color/soma_pittaDay_muted</item>
+        <item name="somaStrong">@color/soma_pittaDay_strong</item>
+        <item name="somaTextP">@color/soma_pittaDay_textP</item>
+        <item name="somaTextS">@color/soma_pittaDay_textS</item>
+        <item name="somaTextM">@color/soma_pittaDay_textM</item>
+        <item name="somaBorder">@color/soma_pittaDay_border</item>
+        <item name="somaBorderSub">@color/soma_pittaDay_borderSub</item>
+        <item name="somaPrimary">@color/soma_pittaDay_primary</item>
+        <item name="somaPrimaryPressed">@color/soma_pittaDay_primaryPressed</item>
+        <item name="somaSecondary">@color/soma_pittaDay_secondary</item>
+        <item name="somaAccent">@color/soma_pittaDay_accent</item>
+        <item name="somaOnFill">@color/soma_pittaDay_onFill</item>
+        <item name="somaTileCalm">@color/soma_pittaDay_tileCalm</item>
+        <item name="somaTileCalmStroke">@color/soma_pittaDay_tileCalmStroke</item>
+        <item name="somaTileWarm">@color/soma_pittaDay_tileWarm</item>
+        <item name="somaTileWarmStroke">@color/soma_pittaDay_tileWarmStroke</item>
+        <item name="colorToolbar">@color/soma_pittaDay_bg</item>
+        <item name="colorDrawable">@color/soma_pittaDay_textS</item>
+        <item name="colorSearchView">@color/soma_pittaDay_elev</item>
+        <item name="colorBackground">@color/soma_pittaDay_bg</item>
+        <item name="colorBottomAppBar">@color/soma_pittaDay_elev</item>
+        <item name="colorDialogBackground">@color/soma_pittaDay_elev</item>
+    </style>
+
+    <style name="AppTheme.Soma.VataPm" parent="AppTheme.SomaBase.Light">
+        <item name="colorPrimary">@color/soma_vataPm_primary</item>
+        <item name="colorPrimaryDark">@color/soma_vataPm_primaryPressed</item>
+        <item name="colorAccent">@color/soma_vataPm_accent</item>
+        <item name="colorSurface">@color/soma_vataPm_elev</item>
+        <item name="android:colorBackground">@color/soma_vataPm_bg</item>
+        <item name="android:textColorPrimary">@color/soma_vataPm_textP</item>
+        <item name="android:textColorSecondary">@color/soma_vataPm_textS</item>
+        <item name="android:textColorHint">@color/soma_vataPm_textM</item>
+        <item name="somaBg">@color/soma_vataPm_bg</item>
+        <item name="somaElev">@color/soma_vataPm_elev</item>
+        <item name="somaSurf">@color/soma_vataPm_surf</item>
+        <item name="somaMuted">@color/soma_vataPm_muted</item>
+        <item name="somaStrong">@color/soma_vataPm_strong</item>
+        <item name="somaTextP">@color/soma_vataPm_textP</item>
+        <item name="somaTextS">@color/soma_vataPm_textS</item>
+        <item name="somaTextM">@color/soma_vataPm_textM</item>
+        <item name="somaBorder">@color/soma_vataPm_border</item>
+        <item name="somaBorderSub">@color/soma_vataPm_borderSub</item>
+        <item name="somaPrimary">@color/soma_vataPm_primary</item>
+        <item name="somaPrimaryPressed">@color/soma_vataPm_primaryPressed</item>
+        <item name="somaSecondary">@color/soma_vataPm_secondary</item>
+        <item name="somaAccent">@color/soma_vataPm_accent</item>
+        <item name="somaOnFill">@color/soma_vataPm_onFill</item>
+        <item name="somaTileCalm">@color/soma_vataPm_tileCalm</item>
+        <item name="somaTileCalmStroke">@color/soma_vataPm_tileCalmStroke</item>
+        <item name="somaTileWarm">@color/soma_vataPm_tileWarm</item>
+        <item name="somaTileWarmStroke">@color/soma_vataPm_tileWarmStroke</item>
+        <item name="colorToolbar">@color/soma_vataPm_bg</item>
+        <item name="colorDrawable">@color/soma_vataPm_textS</item>
+        <item name="colorSearchView">@color/soma_vataPm_elev</item>
+        <item name="colorBackground">@color/soma_vataPm_bg</item>
+        <item name="colorBottomAppBar">@color/soma_vataPm_elev</item>
+        <item name="colorDialogBackground">@color/soma_vataPm_elev</item>
+    </style>
+
+    <style name="AppTheme.Soma.KaphaPm" parent="AppTheme.SomaBase.Dark">
+        <item name="colorPrimary">@color/soma_kaphaPm_primary</item>
+        <item name="colorPrimaryDark">@color/soma_kaphaPm_primaryPressed</item>
+        <item name="colorAccent">@color/soma_kaphaPm_accent</item>
+        <item name="colorSurface">@color/soma_kaphaPm_elev</item>
+        <item name="android:colorBackground">@color/soma_kaphaPm_bg</item>
+        <item name="android:textColorPrimary">@color/soma_kaphaPm_textP</item>
+        <item name="android:textColorSecondary">@color/soma_kaphaPm_textS</item>
+        <item name="android:textColorHint">@color/soma_kaphaPm_textM</item>
+        <item name="somaBg">@color/soma_kaphaPm_bg</item>
+        <item name="somaElev">@color/soma_kaphaPm_elev</item>
+        <item name="somaSurf">@color/soma_kaphaPm_surf</item>
+        <item name="somaMuted">@color/soma_kaphaPm_muted</item>
+        <item name="somaStrong">@color/soma_kaphaPm_strong</item>
+        <item name="somaTextP">@color/soma_kaphaPm_textP</item>
+        <item name="somaTextS">@color/soma_kaphaPm_textS</item>
+        <item name="somaTextM">@color/soma_kaphaPm_textM</item>
+        <item name="somaBorder">@color/soma_kaphaPm_border</item>
+        <item name="somaBorderSub">@color/soma_kaphaPm_borderSub</item>
+        <item name="somaPrimary">@color/soma_kaphaPm_primary</item>
+        <item name="somaPrimaryPressed">@color/soma_kaphaPm_primaryPressed</item>
+        <item name="somaSecondary">@color/soma_kaphaPm_secondary</item>
+        <item name="somaAccent">@color/soma_kaphaPm_accent</item>
+        <item name="somaOnFill">@color/soma_kaphaPm_onFill</item>
+        <item name="somaTileCalm">@color/soma_kaphaPm_tileCalm</item>
+        <item name="somaTileCalmStroke">@color/soma_kaphaPm_tileCalmStroke</item>
+        <item name="somaTileWarm">@color/soma_kaphaPm_tileWarm</item>
+        <item name="somaTileWarmStroke">@color/soma_kaphaPm_tileWarmStroke</item>
+        <item name="colorToolbar">@color/soma_kaphaPm_bg</item>
+        <item name="colorDrawable">@color/soma_kaphaPm_textS</item>
+        <item name="colorSearchView">@color/soma_kaphaPm_elev</item>
+        <item name="colorBackground">@color/soma_kaphaPm_bg</item>
+        <item name="colorBottomAppBar">@color/soma_kaphaPm_elev</item>
+        <item name="colorDialogBackground">@color/soma_kaphaPm_elev</item>
+    </style>
+
+    <style name="AppTheme.Soma.PittaNight" parent="AppTheme.SomaBase.Dark">
+        <item name="colorPrimary">@color/soma_pittaNight_primary</item>
+        <item name="colorPrimaryDark">@color/soma_pittaNight_primaryPressed</item>
+        <item name="colorAccent">@color/soma_pittaNight_accent</item>
+        <item name="colorSurface">@color/soma_pittaNight_elev</item>
+        <item name="android:colorBackground">@color/soma_pittaNight_bg</item>
+        <item name="android:textColorPrimary">@color/soma_pittaNight_textP</item>
+        <item name="android:textColorSecondary">@color/soma_pittaNight_textS</item>
+        <item name="android:textColorHint">@color/soma_pittaNight_textM</item>
+        <item name="somaBg">@color/soma_pittaNight_bg</item>
+        <item name="somaElev">@color/soma_pittaNight_elev</item>
+        <item name="somaSurf">@color/soma_pittaNight_surf</item>
+        <item name="somaMuted">@color/soma_pittaNight_muted</item>
+        <item name="somaStrong">@color/soma_pittaNight_strong</item>
+        <item name="somaTextP">@color/soma_pittaNight_textP</item>
+        <item name="somaTextS">@color/soma_pittaNight_textS</item>
+        <item name="somaTextM">@color/soma_pittaNight_textM</item>
+        <item name="somaBorder">@color/soma_pittaNight_border</item>
+        <item name="somaBorderSub">@color/soma_pittaNight_borderSub</item>
+        <item name="somaPrimary">@color/soma_pittaNight_primary</item>
+        <item name="somaPrimaryPressed">@color/soma_pittaNight_primaryPressed</item>
+        <item name="somaSecondary">@color/soma_pittaNight_secondary</item>
+        <item name="somaAccent">@color/soma_pittaNight_accent</item>
+        <item name="somaOnFill">@color/soma_pittaNight_onFill</item>
+        <item name="somaTileCalm">@color/soma_pittaNight_tileCalm</item>
+        <item name="somaTileCalmStroke">@color/soma_pittaNight_tileCalmStroke</item>
+        <item name="somaTileWarm">@color/soma_pittaNight_tileWarm</item>
+        <item name="somaTileWarmStroke">@color/soma_pittaNight_tileWarmStroke</item>
+        <item name="colorToolbar">@color/soma_pittaNight_bg</item>
+        <item name="colorDrawable">@color/soma_pittaNight_textS</item>
+        <item name="colorSearchView">@color/soma_pittaNight_elev</item>
+        <item name="colorBackground">@color/soma_pittaNight_bg</item>
+        <item name="colorBottomAppBar">@color/soma_pittaNight_elev</item>
+        <item name="colorDialogBackground">@color/soma_pittaNight_elev</item>
+    </style>
+
+    <!-- Count chip in the "All tasks" filter row. Its ground is set in code
+         so the selected one can flip without a second style. -->
+    <style name="LavChip">
+        <item name="android:background">@drawable/bg_lav_chip_off</item>
+        <item name="android:paddingStart">15dp</item>
+        <item name="android:paddingEnd">15dp</item>
+        <item name="android:paddingTop">7dp</item>
+        <item name="android:paddingBottom">7dp</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textSize">@dimen/text_caption</item>
+        <item name="android:textColor">?attr/somaTextS</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <!-- Framework and Material dialogs were inheriting a stock blue on a stock
+         ground, which is what the rate prompt was showing over the home. -->
+    <style name="LavDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="android:background">?attr/somaElev</item>
+        <item name="colorAccent">?attr/somaPrimary</item>
+        <item name="android:textColorPrimary">?attr/somaTextP</item>
+        <item name="android:textColorSecondary">?attr/somaTextM</item>
+        <item name="buttonBarPositiveButtonStyle">@style/LavDialog.Button</item>
+        <item name="buttonBarNegativeButtonStyle">@style/LavDialog.Button</item>
+        <item name="buttonBarNeutralButtonStyle">@style/LavDialog.Button</item>
+    </style>
+
+    <style name="LavDialog.Button" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">?attr/somaPrimary</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!-- Settings: an eyebrow over a card of rows. -->
+    <style name="LavEyebrow">
+        <item name="android:fontFamily">@font/poppins_extrabold</item>
+        <item name="android:textSize">@dimen/text_eyebrow</item>
+        <item name="android:textColor">?attr/somaTextM</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.10</item>
+        <item name="android:paddingStart">6dp</item>
+        <item name="android:paddingTop">22dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <style name="LavGroupCard">
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/bg_lav_group_card</item>
+    </style>
+
+    <style name="LavSettingRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawableEnd">@drawable/drawable_arrow</item>
+        <item name="android:drawablePadding">14dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textColor">?attr/somaTextP</item>
+        <item name="android:textSize">@dimen/text_body</item>
+    </style>
+
+    <style name="LavRowDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginStart">52dp</item>
+        <item name="android:background">?attr/somaBorderSub</item>
+    </style>
+
+    <!-- Dialog actions: one loud, the rest quiet. -->
+    <style name="LavDialogButton.Loud" parent="">
+        <item name="android:layout_height">50dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/bg_lav_cta</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:fontFamily">@font/poppins_extrabold</item>
+        <item name="android:textColor">?attr/somaOnFill</item>
+        <item name="android:textSize">@dimen/text_label</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="LavDialogButton.Quiet" parent="">
+        <item name="android:layout_height">50dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/bg_lav_cta_quiet</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textColor">?attr/somaTextS</item>
+        <item name="android:textSize">@dimen/text_label</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!-- Destructive confirm. dialog_default is only ever the delete prompt,
+         so its primary action carries the same rose used for late work. -->
+    <style name="LavDialogButton.Danger" parent="">
+        <item name="android:layout_height">50dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/bg_lav_cta_danger</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:fontFamily">@font/poppins_extrabold</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">@dimen/text_label</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+</resources>

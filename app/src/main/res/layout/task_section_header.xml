@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Date-group heading between the card groups. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:baselineAligned="false"
+    android:paddingStart="26dp"
+    android:paddingEnd="26dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="10dp">
+
+    <TextView
+        android:id="@+id/tvSectionTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="@dimen/text_eyebrow"
+        android:letterSpacing="0.10"
+        android:textAllCaps="true"
+        android:fontFamily="@font/poppins_extrabold"
+        android:textColor="?attr/somaTextM" />
+
+    <TextView
+        android:id="@+id/tvSectionCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_eyebrow"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="?attr/somaTextM" />
+
+</LinearLayout>

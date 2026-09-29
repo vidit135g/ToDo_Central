@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.absolute.todocentral.BuildConfig
 import com.absolute.todocentral.R
+import com.absolute.todocentral.ui.view.AboutActivity
 import com.absolute.todocentral.ui.view.settings.fragment.base.BaseSettingsFragment
 import com.absolute.todocentral.utils.DeviceInfo
 import com.absolute.todocentral.utils.toast
@@ -30,6 +31,9 @@ class FragmentSettings : Fragment() {
         view?.findViewById<View>(R.id.tvNotifications)?.setOnClickListener { openFragment(FragmentNotifications()) }
         view?.findViewById<View>(R.id.tvDateAndTime)?.setOnClickListener { openFragment(FragmentDateAndTime()) }
         view?.findViewById<View>(R.id.tvBackupAndRestore)?.setOnClickListener { openFragment(FragmentBackupAndRestore()) }
+        view?.findViewById<View>(R.id.tvAbout)?.setOnClickListener {
+            startActivity(Intent(requireContext(), AboutActivity::class.java))
+        }
         view?.findViewById<View>(R.id.tvRate)?.setOnClickListener { rateThisApp() }
         view?.findViewById<View>(R.id.tvFeedback)?.setOnClickListener { sendFeedback() }
         view?.findViewById<View>(R.id.tvOtherApps)?.setOnClickListener { openUri(GOOGLE_PLAY_PAGE) }

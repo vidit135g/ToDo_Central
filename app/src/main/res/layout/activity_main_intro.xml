@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  One slide of the onboarding carousel (material-intro binds mi_image,
+  mi_title and mi_description by id). Typography and spacing brought onto the
+  app's own scale instead of AppCompat's Headline/Subhead defaults.
+-->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -9,18 +14,20 @@
         android:fitsSystemWindows="false"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="@dimen/mi_baseline">
+        android:paddingStart="28dp"
+        android:paddingEnd="28dp"
+        android:paddingTop="@dimen/mi_baseline"
+        android:paddingBottom="@dimen/mi_baseline">
 
         <ImageView
             android:id="@id/mi_image"
-            android:layout_width="350dp"
-            android:layout_height="240dp"
+            android:layout_width="300dp"
+            android:layout_height="220dp"
             android:layout_marginBottom="@dimen/mi_baseline"
             android:adjustViewBounds="true"
             android:gravity="center"
-            android:paddingLeft="36dp"
-            android:paddingRight="36dp"
-            android:scaleType="fitCenter" />
+            android:scaleType="fitCenter"
+            android:contentDescription="@null" />
 
         <TextView
             android:id="@id/mi_title"
@@ -28,17 +35,23 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/mi_baseline"
             android:gravity="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:fontFamily="@font/poppins_extrabold"
+            android:textColor="?attr/somaTextP"
+            android:textSize="@dimen/text_title"
+            android:lineSpacingMultiplier="1.1"
+            android:letterSpacing="-0.015"
             app:layout_parallaxFactor="0.5" />
 
         <TextView
             android:id="@id/mi_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/mi_baseline"
+            android:layout_marginTop="12dp"
             android:gravity="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-            android:textSize="15sp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="?attr/somaTextM"
+            android:textSize="@dimen/text_body"
+            android:lineSpacingMultiplier="1.35"
             app:layout_parallaxFactor="0.4" />
     </com.heinrichreimersoftware.materialintro.view.parallax.ParallaxLinearLayout>
 </layout>

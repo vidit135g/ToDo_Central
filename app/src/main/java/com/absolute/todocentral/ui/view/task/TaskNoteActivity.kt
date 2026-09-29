@@ -9,7 +9,7 @@ import android.view.MenuItem
 import androidx.core.content.ContextCompat
 import com.absolute.todocentral.R
 import com.absolute.todocentral.ui.view.base.BaseActivity
-import daio.io.dresscode.matchDressCode
+import com.absolute.todocentral.utils.applySomaTheme
 import kotterknife.bindView
 import android.widget.EditText
 import android.widget.ScrollView
@@ -20,7 +20,7 @@ class TaskNoteActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        matchDressCode()
+        applySomaTheme()
         setContentView(R.layout.activity_task_note)
         initToolbar(getString(R.string.task_note), R.drawable.round_close_black_24)
         initScrollViewListener(svTaskDetails)
@@ -58,7 +58,7 @@ class TaskNoteActivity : BaseActivity() {
         when (item.itemId) {
             android.R.id.home -> {
                 hideKeyboard(tvTaskNote)
-                onBackPressed()
+                onBackPressedDispatcher.onBackPressed()
             }
             R.id.action_save -> saveNote()
         }

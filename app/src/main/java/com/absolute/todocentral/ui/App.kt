@@ -2,18 +2,17 @@ package com.absolute.todocentral.ui
 
 import android.app.Application
 import com.absolute.todocentral.R
-import daio.io.dresscode.DressCode
-import daio.io.dresscode.declareDressCode
+import com.absolute.todocentral.utils.PreferenceHelper
+import com.absolute.todocentral.utils.SomaPeriod
 
 class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
 
-        declareDressCode(
-                DressCode("Light", R.style.AppTheme_Light),
-                DressCode("Dark", R.style.AppTheme_Dark),
-                DressCode("Black", R.style.AppTheme_Black)
-        )
+        // Activities also init this in onCreate, but the period has to be
+        // resolved here first, before any of them exist.
+        PreferenceHelper.getInstance().init(applicationContext)
+
     }
 }

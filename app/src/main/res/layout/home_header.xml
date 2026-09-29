@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The whole top of the home screen: greeting, the day's headline, a swipeable
+  row of focus cards, and the "All tasks" filter chips. It rides in the task
+  RecyclerView as item 0 so the page scrolls as one surface.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="14dp">
+
+    <!-- Greeting row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:baselineAligned="false"
+        android:paddingStart="@dimen/gutter"
+        android:paddingEnd="@dimen/gutter">
+
+        <FrameLayout
+            android:id="@+id/flPeriod"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <com.absolute.todocentral.ui.view.custom.DayRingView
+                android:id="@+id/ringDay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/ivPeriod"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_lav_sun"
+                app:tint="?attr/somaPrimary"
+                android:contentDescription="@string/cd_switch_period" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvGreeting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_extrabold"
+                android:textColor="?attr/somaTextP"
+                android:textSize="@dimen/text_body" />
+
+            <TextView
+                android:id="@+id/tvPeriodName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="?attr/somaTextM"
+                android:textSize="@dimen/text_caption" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/flBell"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/bg_lav_circle_elev">
+
+            <ImageView
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_lav_bell"
+                app:tint="?attr/somaTextP"
+                android:contentDescription="@string/cd_reminders" />
+
+            <View
+                android:id="@+id/vBellDot"
+                android:layout_width="7dp"
+                android:layout_height="7dp"
+                android:layout_gravity="top|end"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="9dp"
+                android:background="@drawable/bg_lav_dot_late" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/flAdd"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/bg_lav_circle_ink">
+
+            <ImageView
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_soma_plus"
+                app:tint="?attr/somaBg"
+                android:contentDescription="@string/bento_add_task" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <!-- The day's headline -->
+    <TextView
+        android:id="@+id/tvHeadline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/block_gap"
+        android:paddingStart="@dimen/gutter"
+        android:paddingEnd="@dimen/gutter"
+        android:fontFamily="@font/poppins_extrabold"
+        android:textColor="?attr/somaTextP"
+        android:textSize="@dimen/text_display"
+        android:lineSpacingMultiplier="1.04"
+        android:letterSpacing="-0.018" />
+
+    <!-- Focus cards -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFocus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/block_gap"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        android:paddingStart="@dimen/gutter"
+        android:paddingEnd="@dimen/gutter"
+        android:overScrollMode="never" />
+
+    <LinearLayout
+        android:id="@+id/llDots"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        android:gravity="center" />
+
+    <!-- All tasks -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/block_gap"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:baselineAligned="false"
+        android:paddingStart="@dimen/gutter"
+        android:paddingEnd="@dimen/gutter">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/home_all_tasks"
+            android:fontFamily="@font/poppins_extrabold"
+            android:textColor="?attr/somaTextP"
+            android:textSize="@dimen/text_section" />
+
+        <TextView
+            android:id="@+id/tvSeeAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:paddingStart="8dp"
+            android:text="@string/home_see_all"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="?attr/somaPrimary"
+            android:textSize="@dimen/text_caption" />
+
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/gutter"
+        android:paddingEnd="@dimen/gutter"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/chipTodo"
+                style="@style/LavChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/chipToday"
+                style="@style/LavChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp" />
+
+            <TextView
+                android:id="@+id/chipDone"
+                style="@style/LavChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+</LinearLayout>

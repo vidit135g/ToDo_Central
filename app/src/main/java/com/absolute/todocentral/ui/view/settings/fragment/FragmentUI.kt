@@ -10,7 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import com.absolute.todocentral.R
 import com.absolute.todocentral.ui.view.settings.fragment.base.BaseSettingsFragment
 import com.absolute.todocentral.utils.PreferenceHelper
-import daio.io.dresscode.dressCodeStyleId
+import com.absolute.todocentral.utils.SomaPeriod
 import kotterknife.bindView
 import androidx.appcompat.widget.SwitchCompat
 
@@ -50,31 +50,24 @@ class FragmentUI : BaseSettingsFragment() {
 
         clChooseTheme.setOnClickListener {
             val listItems = resources.getStringArray(R.array.app_theme)
-            var selectedItemPosition = when (activity?.dressCodeStyleId) {
-                R.style.AppTheme_Light -> 0
-                R.style.AppTheme_Dark -> 1
-                R.style.AppTheme_Black -> 2
-                else -> 0
-            }
+            // Index 0 is Auto; 1..6 map onto SomaPeriod.ORDER.
+            val saved = SomaPeriod.getPreference()
+            var selectedItemPosition =
+                    if (saved == SomaPeriod.AUTO) 0
+                    else SomaPeriod.ORDER.indexOf(saved).let { if (it < 0) 0 else it + 1 }
 
-            val builder = when (activity?.dressCodeStyleId) {
-                R.style.AppTheme_Light -> AlertDialog.Builder(activity as Context, R.style.AlertDialogStyle_Light)
-                R.style.AppTheme_Dark -> AlertDialog.Builder(activity as Context, R.style.AlertDialogStyle_Dark)
-                else -> AlertDialog.Builder(activity as Context, R.style.AlertDialogStyle_Dark)
-            }
+            val builder = AlertDialog.Builder(activity as Context,
+                    if (SomaPeriod.isLight()) R.style.AlertDialogStyle_Light
+                    else R.style.AlertDialogStyle_Dark)
             builder.apply {
                 setTitle(getString(R.string.app_theme_dialog_title))
                 setSingleChoiceItems(listItems, selectedItemPosition) { dialogInterface, i ->
                     selectedItemPosition = i
-
-                    activity?.dressCodeStyleId = when (selectedItemPosition) {
-                        0 -> R.style.AppTheme_Light
-                        1 -> R.style.AppTheme_Dark
-                        2 -> R.style.AppTheme_Black
-                        else -> R.style.AppTheme_Light
-                    }
+                    SomaPeriod.setPreference(
+                            if (i == 0) SomaPeriod.AUTO else SomaPeriod.ORDER[i - 1])
                     isThemeChanged = true
                     dialogInterface.dismiss()
+                    activity?.recreate()
                 }
             }
             builder.create().apply {

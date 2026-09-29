@@ -20,8 +20,8 @@ import com.absolute.todocentral.utils.PreferenceHelper
 import com.absolute.todocentral.utils.gone
 import com.absolute.todocentral.utils.visible
 import com.absolute.todocentral.vm.base.BaseViewModel
-import daio.io.dresscode.dressCodeStyleId
-import daio.io.dresscode.matchDressCode
+import com.absolute.todocentral.utils.SomaPeriod
+import com.absolute.todocentral.utils.applySomaTheme
 import android.widget.*
 import com.google.android.material.textfield.TextInputLayout
 import kotterknife.bindView
@@ -40,7 +40,7 @@ abstract class BaseTaskActivity : BaseActivity(), DatePickerDialog.OnDateSetList
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        matchDressCode()
+        applySomaTheme()
         setContentView(R.layout.activity_task_details)
         mCalendar = Calendar.getInstance()
         initListeners()
@@ -85,10 +85,8 @@ abstract class BaseTaskActivity : BaseActivity(), DatePickerDialog.OnDateSetList
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-        val datePickerStyle = when (dressCodeStyleId) {
-            R.style.AppTheme_Light -> R.style.DatePicker_Light
-            else -> R.style.DatePicker_Dark
-        }
+        val datePickerStyle =
+                if (SomaPeriod.isLight()) R.style.DatePicker_Light else R.style.DatePicker_Dark
         DatePickerDialog(this, datePickerStyle, this, year, month, day).apply {
             window?.attributes?.windowAnimations = R.style.DialogAnimation
             show()
@@ -133,7 +131,7 @@ abstract class BaseTaskActivity : BaseActivity(), DatePickerDialog.OnDateSetList
     override fun onOptionsItemSelected(item: MenuItem) =
             if (item.itemId == android.R.id.home) {
                 hideKeyboard(mTitleEditText)
-                onBackPressed()
+                onBackPressedDispatcher.onBackPressed()
                 true
             } else false
 
@@ -158,6 +156,9 @@ abstract class BaseTaskActivity : BaseActivity(), DatePickerDialog.OnDateSetList
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        // Without the super call the result never reaches any hosting
+        // fragment, and the dialog fragments on this screen rely on it.
+        super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK) {
             tvTaskNote.text = data?.getStringExtra("note")
         }

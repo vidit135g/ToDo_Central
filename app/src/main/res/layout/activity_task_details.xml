@@ -37,10 +37,10 @@
                     android:id="@+id/tvTaskTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/product_sans"
+                    android:fontFamily="@font/poppins_bold"
                     android:inputType="textAutoCorrect|textCapSentences"
-                    android:textColor="@color/gblue"
-                    android:textSize="20sp" />
+                    android:textColor="?attr/somaTextP"
+                    android:textSize="@dimen/text_title" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Bento Note Card -->
@@ -67,7 +67,7 @@
                     android:focusableInTouchMode="false"
                     android:hint="@string/hint_note"
                     android:maxLines="7"
-                    android:fontFamily="@font/product_sans"
+                    android:fontFamily="@font/poppins_medium"
                     android:textColor="?android:attr/textColorPrimary"
                     android:textColorHint="#8E8E93"
                     android:textSize="17sp" />
@@ -116,7 +116,7 @@
                         android:layout_toEndOf="@id/ivTaskReminderIcon"
                         android:focusableInTouchMode="false"
                         android:hint="@string/hint_reminder"
-                        android:fontFamily="@font/product_sans"
+                        android:fontFamily="@font/poppins_medium"
                         android:textColor="?android:attr/textColorPrimary"
                         android:textColorHint="#8E8E93"
                         android:textSize="17sp" />
@@ -137,21 +137,19 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnTaskConfirm"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="16dp"
-        android:padding="16dp"
-        app:cornerRadius="16dp"
-        app:strokeWidth="1dp"
-        app:strokeColor="@color/gblue"
-        android:text="Create new task"
-        android:fontFamily="@font/product_sans"
+        android:layout_marginStart="@dimen/gutter"
+        android:layout_marginEnd="@dimen/gutter"
+        android:layout_marginBottom="20dp"
+        app:cornerRadius="28dp"
+        app:backgroundTint="?attr/somaPrimary"
+        android:text="@string/task_create"
+        android:fontFamily="@font/poppins_extrabold"
         android:textAllCaps="false"
-        android:textColor="@color/gblue"
-        android:textSize="16sp"/>
+        android:textColor="?attr/somaOnFill"
+        android:textSize="@dimen/text_body"/>
 </RelativeLayout>

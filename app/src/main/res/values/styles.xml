@@ -4,7 +4,7 @@
         <item name="colorAccent">@color/blue</item>
         <item name="colorControlNormal">@color/blue</item>
         <item name="colorControlHighlight">@color/greyWhite</item>
-        <item name="android:fontFamily">@font/googlefont</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
         <item name="searchViewStyle">@style/SearchViewStyle</item>
     </style>
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Android 12+ draws the cold-start splash itself from these. Without
+         them it falls back to the launcher icon on a white ground, which is
+         what the app was showing before anything of ours appears. -->
+    <style name="Theme.TodoCentral.Splash" parent="AppTheme.Soma.PittaDay">
+        <item name="android:windowSplashScreenBackground">@color/soma_splash_bg</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_splash_mark</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">@color/soma_splash_bg</item>
+    </style>
+</resources>

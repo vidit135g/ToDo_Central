@@ -11,10 +11,17 @@ import com.absolute.todocentral.R
 
 abstract class BaseDialogFragment : DialogFragment() {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // Must be requested before any content is added. It was previously done
+        // in onViewCreated, which always throws
+        // "requestFeature() must be called before adding content".
+        setStyle(STYLE_NO_TITLE, 0)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dialog?.window?.apply {
-            requestFeature(Window.FEATURE_NO_TITLE)
             setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             attributes?.windowAnimations = R.style.DialogAnimation
         }

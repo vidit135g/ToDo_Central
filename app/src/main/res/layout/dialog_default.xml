@@ -1,53 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Confirm/cancel sheet. The stacked full-width rows with hairlines between
+     them are now a title, a message and two real buttons. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="270dp"
+    android:layout_width="300dp"
     android:layout_height="wrap_content"
     android:background="@drawable/dialog_background"
-    android:divider="@drawable/dialog_divider_horizontal"
     android:orientation="vertical"
-    android:showDividers="middle">
+    android:padding="22dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_title"
+        android:fontFamily="@font/poppins_extrabold"
+        android:textColor="?attr/somaTextP"
+        android:textSize="@dimen/text_section" />
+
+    <TextView
+        android:id="@+id/tvDialogMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="?attr/somaTextM"
+        android:textSize="@dimen/text_caption"
+        android:lineSpacingMultiplier="1.35"
+        tools:text="@string/dialog_message" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginTop="22dp"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingTop="10dp"
-            android:text="@string/dialog_title"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:id="@+id/tvCancel"
+            style="@style/LavDialogButton.Quiet"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/action_cancel" />
 
         <TextView
-            android:id="@+id/tvDialogMessage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:textSize="18sp"
-            tools:text="@string/dialog_message" />
+            android:id="@+id/tvConfirm"
+            style="@style/LavDialogButton.Danger"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            tools:text="@string/action_delete" />
+
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/tvConfirm"
-        style="@style/DialogButtonTheme"
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:gravity="center"
-        tools:text="@string/action_delete" />
-
-    <TextView
-        android:id="@+id/tvCancel"
-        style="@style/DialogButtonTheme"
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:gravity="center"
-        android:text="@string/action_cancel" />
 </LinearLayout>

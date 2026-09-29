@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  One card in the focus row. Fixed height, with the step bar pinned to the
+  bottom, so a card with subtasks and one without still line up. Width is set
+  in code from the screen so the next card peeks by the same amount on every
+  device.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llFocusCard"
+    android:layout_width="240dp"
+    android:layout_height="@dimen/focus_card_height"
+    android:layout_marginEnd="@dimen/focus_card_gap"
+    android:orientation="vertical"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@drawable/bg_lav_card_big"
+    android:paddingStart="18dp"
+    android:paddingEnd="18dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:baselineAligned="false">
+
+        <TextView
+            android:id="@+id/tvFocusTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_lav_pill_accent"
+            android:paddingStart="11dp"
+            android:paddingEnd="11dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:fontFamily="@font/poppins_extrabold"
+            android:textSize="@dimen/text_eyebrow"
+            android:letterSpacing="0.06"
+            android:maxLines="1" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <FrameLayout
+            android:id="@+id/flFocusOpen"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_lav_circle_elev">
+
+            <ImageView
+                android:id="@+id/ivFocusOpen"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_lav_arrow_out"
+                android:contentDescription="@string/cd_open_task" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvFocusTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:fontFamily="@font/poppins_extrabold"
+        android:textSize="@dimen/text_title"
+        android:lineSpacingMultiplier="1.08"
+        android:letterSpacing="-0.015" />
+
+    <TextView
+        android:id="@+id/tvFocusNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="@dimen/text_caption" />
+
+    <!-- Pushes everything below it to the bottom edge of the fixed card. -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:minHeight="8dp" />
+
+    <LinearLayout
+        android:id="@+id/llFocusWhen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:baselineAligned="false">
+
+        <ImageView
+            android:id="@+id/ivFocusClock"
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:src="@drawable/ic_lav_clock" />
+
+        <TextView
+            android:id="@+id/tvFocusWhen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="@dimen/text_caption" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+        <TextView
+            android:id="@+id/tvFocusStepsLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/home_steps"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="@dimen/text_caption" />
+
+        <TextView
+            android:id="@+id/tvFocusSteps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_extrabold"
+            android:textSize="@dimen/text_caption" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/flFocusTrack"
+        android:layout_width="match_parent"
+        android:layout_height="7dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_lav_bar_track">
+
+        <View
+            android:id="@+id/vFocusFill"
+            android:layout_width="0dp"
+            android:layout_height="7dp"
+            android:background="@drawable/bg_lav_bar_fill" />
+
+    </FrameLayout>
+
+</LinearLayout>

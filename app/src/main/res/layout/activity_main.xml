@@ -1,75 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  The home surface is one scrolling list: the header (greeting, headline,
+  focus cards, filter chips) rides in the RecyclerView as item 0, and the
+  nav pill floats over it.
+-->
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/clMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorBackground"
+    android:background="?attr/somaBg"
     tools:context=".ui.view.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTasksList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="56dp"
         android:clipToPadding="false"
         android:overScrollMode="never"
-        android:paddingTop="70dp"
-        android:paddingBottom="40dp" />
+        android:paddingBottom="104dp" />
 
-    <include layout="@layout/toolbar" />
+    <include layout="@layout/lav_bottom_nav" />
 
-    <LinearLayout
-        android:id="@+id/llEmptyView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/empty_list"
-            android:layout_width="match_parent"
-            android:layout_height="320dp"
-            android:layout_gravity="center"
-            app:lottie_autoPlay="true"
-            android:scaleType="centerCrop"
-            app:lottie_rawRes="@raw/empty"
-            app:lottie_loop="true" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:gravity="center"
-            android:fontFamily="@font/product_sans"
-            android:text="@string/empty_view_text"
-            android:textColor="@color/bento_subtext"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/babMainMenu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:backgroundTint="?attr/colorBottomAppBar"
-        app:fabAlignmentMode="center"
-        app:fabCradleRoundedCornerRadius="16dp"
-        app:fabCradleVerticalOffset="12dp"
-        app:navigationIcon="@drawable/outline_settings_black_24" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabCreateNewTask"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/cusotmcreate"
-        app:backgroundTint="@color/white"
-        app:fabSize="normal"
-        app:tint="@null"
-        app:maxImageSize="30dp"
-        android:background="@null"
-        app:layout_anchor="@id/babMainMenu" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -14,14 +14,14 @@ import com.absolute.todocentral.service.widget.WidgetProvider
 import com.absolute.todocentral.ui.view.base.BaseActivity
 import com.absolute.todocentral.ui.view.settings.fragment.FragmentSettings
 import com.absolute.todocentral.ui.view.settings.fragment.FragmentUI
-import daio.io.dresscode.matchDressCode
+import com.absolute.todocentral.utils.applySomaTheme
 
 
 class SettingsActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        matchDressCode()
+        applySomaTheme()
         setContentView(R.layout.activity_settings)
         initToolbar(getString(R.string.settings))
         openSettingsFragment()
@@ -56,7 +56,7 @@ class SettingsActivity : BaseActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
-            onBackPressed()
+            onBackPressedDispatcher.onBackPressed()
             return true
         }
         return false

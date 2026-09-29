@@ -1,32 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- One task in the widget list. Fixed colours, as above. -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rvWidgetItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/widget_item_rounded_corner"
     android:foreground="?android:attr/selectableItemBackground"
-    android:padding="5dp">
+    android:paddingStart="14dp"
+    android:paddingEnd="14dp"
+    android:paddingTop="11dp"
+    android:paddingBottom="11dp">
 
-    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    <TextView
         android:id="@+id/tvItemTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
         android:layout_toStartOf="@id/ivItemNoteIcon"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/widget_ink"
+        android:textSize="14.5sp"
+        android:lineSpacingMultiplier="1.1" />
 
     <TextView
         android:id="@+id/tvItemDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvItemTitle"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginBottom="3dp"
-        android:textSize="12sp" />
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/widget_muted"
+        android:textSize="11.5sp" />
 
     <ImageView
         android:id="@+id/ivItemNoteIcon"
@@ -34,8 +41,8 @@
         android:layout_height="15dp"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="5dp"
         android:src="@drawable/round_notes_black_24"
-        android:tint="@color/dullGrey"
+        tools:ignore="UseAppTint"
+        android:tint="@color/widget_muted"
         android:visibility="gone" />
 </RelativeLayout>

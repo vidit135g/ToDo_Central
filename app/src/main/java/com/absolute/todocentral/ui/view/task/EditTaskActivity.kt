@@ -104,7 +104,7 @@ class EditTaskActivity : BaseTaskActivity() {
 
             android.R.id.home -> {
                 hideKeyboard(mTitleEditText)
-                onBackPressed()
+                onBackPressedDispatcher.onBackPressed()
             }
 
             R.id.action_delete -> {

@@ -9,7 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import com.absolute.todocentral.R
 import com.absolute.todocentral.ui.view.settings.fragment.base.BaseSettingsFragment
 import com.absolute.todocentral.utils.PreferenceHelper
-import daio.io.dresscode.dressCodeStyleId
+import com.absolute.todocentral.utils.SomaPeriod
 import kotterknife.bindView
 
 class FragmentDateAndTime : BaseSettingsFragment() {
@@ -47,11 +47,9 @@ class FragmentDateAndTime : BaseSettingsFragment() {
         val preferenceHelper = PreferenceHelper.getInstance()
         var selectedItemPosition = preferenceHelper.getInt(formatKey)
 
-        val builder = when (activity?.dressCodeStyleId) {
-            R.style.AppTheme_Light -> AlertDialog.Builder(activity as Context, R.style.AlertDialogStyle_Light)
-            R.style.AppTheme_Dark -> AlertDialog.Builder(activity as Context, R.style.AlertDialogStyle_Dark)
-            else -> AlertDialog.Builder(activity as Context, R.style.AlertDialogStyle_Dark)
-        }
+        val builder = AlertDialog.Builder(activity as Context,
+                if (SomaPeriod.isLight()) R.style.AlertDialogStyle_Light
+                else R.style.AlertDialogStyle_Dark)
         builder.apply {
             setTitle(title)
             setSingleChoiceItems(listItems, selectedItemPosition) { dialogInterface, i ->

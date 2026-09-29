@@ -21,6 +21,16 @@ class PreferenceHelper private constructor() {
 
     fun getInt(key: String) = mPreferences.getInt(key, 0)
 
+    fun getString(key: String, default: String): String =
+        mPreferences.getString(key, default) ?: default
+
+    fun putString(key: String, value: String) {
+        mPreferences.edit().apply {
+            putString(key, value)
+            apply()
+        }
+    }
+
     fun putInt(key: String, value: Int) {
         mPreferences.edit().apply {
             putInt(key, value)

@@ -1,88 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<!--
+  First run. The only screen someone sees before any of their own data exists,
+  so it carries the app's mark and nothing else — no illustration, no spinner
+  standing in for work that is not happening.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/mainl"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context="com.absolute.todocentral.ui.view.LoadingActivity">
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="?attr/somaBg"
+    android:paddingStart="@dimen/gutter"
+    android:paddingEnd="@dimen/gutter">
 
-
-
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/ivSplash"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:layout_gravity="center"
-        app:lottie_autoPlay="true"
-        android:scaleType="centerCrop"
-        app:lottie_rawRes="@raw/empty"
-        app:lottie_loop="true" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome to ToDo Central"
-        android:textSize="28sp"
-        android:id="@+id/intro"
-        android:layout_below="@+id/ivSplash"
-        android:typeface="monospace"
-        android:clickable="true"
-        android:textColor="@color/black"
-        android:layout_centerHorizontal="true"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Keep track of important things that you need to get done in one place."
-        android:textSize="14sp"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:id="@+id/introdesc"
-        android:typeface="monospace"
-        android:layout_below="@+id/intro"
-        android:clickable="true"
-        android:textAlignment="center"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/black"
-        android:layout_centerHorizontal="true"/>
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:text="Get started"
-        app:strokeColor="@color/gblue"
-        android:textSize="14sp"
-        android:paddingRight="20dp"
+    <FrameLayout
+        android:id="@+id/ivSplash"
+        android:layout_width="104dp"
+        android:layout_height="104dp"
+        android:background="@drawable/bg_lav_mark_tile">
 
-        android:visibility="visible"
-        android:paddingLeft="20dp"
-        android:layout_marginBottom="20dp"
-        android:id="@+id/pixelbutton"
-        android:textColor="@color/gblue"
-        android:layout_alignParentBottom="true"
-        android:textAllCaps="false"
-        android:layout_centerHorizontal="true"/>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal">
-        <ProgressBar
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:indeterminate="true"
-            android:visibility="gone"
-            android:id="@+id/loading_spinner"
-            android:layout_marginTop="3dp"
-            android:layout_marginRight="8dp"
+        <ImageView
+            android:layout_width="62dp"
+            android:layout_height="62dp"
             android:layout_gravity="center"
-            />
+            android:src="@drawable/ic_splash_mark"
+            android:contentDescription="@null" />
 
-    </LinearLayout>
+    </FrameLayout>
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/intro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="@string/intro_title"
+        android:fontFamily="@font/poppins_extrabold"
+        android:textColor="?attr/somaTextP"
+        android:textSize="@dimen/text_display"
+        android:lineSpacingMultiplier="1.06"
+        android:letterSpacing="-0.02" />
+
+    <TextView
+        android:id="@+id/introdesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:gravity="center"
+        android:text="@string/intro_body"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="?attr/somaTextM"
+        android:textSize="@dimen/text_body"
+        android:lineSpacingMultiplier="1.35" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/pixelbutton"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="center"
+        android:background="@drawable/bg_lav_cta"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/intro_cta"
+        android:fontFamily="@font/poppins_extrabold"
+        android:textColor="?attr/somaOnFill"
+        android:textSize="@dimen/text_body" />
+
+    <ProgressBar
+        android:id="@+id/loading_spinner"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="18dp"
+        android:indeterminate="true"
+        android:visibility="gone" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="36dp" />
+
+</LinearLayout>

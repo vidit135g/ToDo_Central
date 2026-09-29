@@ -1,32 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Home-screen widget. Colours are fixed: RemoteViews is inflated by the
+     launcher and cannot resolve this app's theme attributes. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/widget_rounded_corner"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="6dp">
 
     <TextView
         android:id="@+id/tvWidgetTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:elevation="4dp"
-        android:gravity="center"
-        android:padding="10dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="10dp"
         android:text="@string/widget_title"
-        android:textColor="@color/grey"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:fontFamily="@font/poppins_extrabold"
+        android:textColor="@color/widget_accent"
+        android:textSize="15sp"
+        android:letterSpacing="0.02" />
 
     <ListView
         android:id="@+id/lvWidgetTasksList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="5dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="6dp"
         android:divider="@null"
-        android:dividerHeight="5dp"
+        android:dividerHeight="6dp"
         android:overScrollMode="never"
         android:scrollbars="none" />
 </LinearLayout>

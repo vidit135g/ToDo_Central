@@ -5,6 +5,15 @@ import com.absolute.todocentral.R
 import com.heinrichreimersoftware.materialintro.app.IntroActivity
 import com.heinrichreimersoftware.materialintro.slide.SimpleSlide
 
+/**
+ * The four-slide onboarding carousel.
+ *
+ * NOTE: nothing currently starts this activity. It is declared in the manifest
+ * and MainActivity still handles its APP_INTRO_CODE result, but no code path
+ * launches it — first run goes through LoadingActivity's welcome screen
+ * instead. Left in place, and restyled, pending a decision on whether to wire
+ * it back into first run or drop it.
+ */
 class MainIntroActivity : IntroActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +33,8 @@ class MainIntroActivity : IntroActivity() {
                 .title(title)
                 .description(description)
                 .image(drawable)
-                .background(R.color.white)
-                .backgroundDark(R.color.white)
+                .background(R.color.soma_pittaDay_bg)
+                .backgroundDark(R.color.soma_pittaNight_bg)
                 .layout(R.layout.activity_main_intro)
                 .build())
     }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- One type scale for the whole app, so sizes stop being decided per
+         layout. Steps are ~1.2x apart; anything not on this list is a bug. -->
+    <dimen name="text_display">34sp</dimen>
+    <dimen name="text_title">21sp</dimen>
+    <dimen name="text_section">19sp</dimen>
+    <dimen name="text_body">16sp</dimen>
+    <dimen name="text_label">14sp</dimen>
+    <dimen name="text_caption">13sp</dimen>
+    <dimen name="text_eyebrow">11.5sp</dimen>
+
+    <!-- Page gutter and the rhythm between blocks. -->
+    <dimen name="gutter">20dp</dimen>
+    <dimen name="block_gap">22dp</dimen>
+
+    <!-- Focus cards are a fixed height so the row never goes ragged when one
+         card has subtasks and its neighbour does not. Taller than the type
+         alone needs, so a two-line title at the new scale still breathes. -->
+    <dimen name="focus_card_height">224dp</dimen>
+    <dimen name="focus_card_gap">12dp</dimen>
+    <!-- How much of the next card shows past the gutter. -->
+    <dimen name="focus_card_peek">44dp</dimen>
+
+</resources>

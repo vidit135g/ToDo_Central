@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Soma dosha-period palettes, ported verbatim from the source app's
+         mobile/src/design/themes/dosha-periods.ts tokens. -->
+
+    <!-- vata-dawn · 2-6am · deep warm indigo -->
+    <color name="soma_vataDawn_bg">#16122B</color>
+    <color name="soma_vataDawn_elev">#211B3D</color>
+    <color name="soma_vataDawn_surf">#2B2450</color>
+    <color name="soma_vataDawn_muted">#372E63</color>
+    <color name="soma_vataDawn_strong">#473C7E</color>
+    <color name="soma_vataDawn_textP">#F4F1FB</color>
+    <color name="soma_vataDawn_textS">#D4CBEF</color>
+    <color name="soma_vataDawn_textM">#978DBE</color>
+    <color name="soma_vataDawn_border">#4F4385</color>
+    <color name="soma_vataDawn_borderSub">#3B3266</color>
+    <color name="soma_vataDawn_primary">#A98BF0</color>
+    <color name="soma_vataDawn_primaryPressed">#8F6DE2</color>
+    <color name="soma_vataDawn_secondary">#B7E27E</color>
+    <color name="soma_vataDawn_accent">#B99BF5</color>
+    <color name="soma_vataDawn_onFill">#16122B</color>
+
+    <!-- kapha-am · 6-10am · warm cream + fresh sage -->
+    <color name="soma_kaphaAm_bg">#F7F4FD</color>
+    <color name="soma_kaphaAm_elev">#FFFFFF</color>
+    <color name="soma_kaphaAm_surf">#F0EAFB</color>
+    <color name="soma_kaphaAm_muted">#E7DEF9</color>
+    <color name="soma_kaphaAm_strong">#D6C8F3</color>
+    <color name="soma_kaphaAm_textP">#191526</color>
+    <color name="soma_kaphaAm_textS">#5F5877</color>
+    <color name="soma_kaphaAm_textM">#7E7699</color>
+    <color name="soma_kaphaAm_border">#DDD2F2</color>
+    <color name="soma_kaphaAm_borderSub">#EBE3F8</color>
+    <color name="soma_kaphaAm_primary">#7C4DE0</color>
+    <color name="soma_kaphaAm_primaryPressed">#6438C4</color>
+    <color name="soma_kaphaAm_secondary">#6E9E34</color>
+    <color name="soma_kaphaAm_accent">#8B60E6</color>
+    <color name="soma_kaphaAm_onFill">#FFFFFF</color>
+
+    <!-- pitta-day · 10am-2pm · bright warm cream + clear ember -->
+    <color name="soma_pittaDay_bg">#F4F1FB</color>
+    <color name="soma_pittaDay_elev">#FFFFFF</color>
+    <color name="soma_pittaDay_surf">#EBE2FB</color>
+    <color name="soma_pittaDay_muted">#E0D4F7</color>
+    <color name="soma_pittaDay_strong">#CDBAF0</color>
+    <color name="soma_pittaDay_textP">#191526</color>
+    <color name="soma_pittaDay_textS">#5F5877</color>
+    <color name="soma_pittaDay_textM">#736C88</color>
+    <color name="soma_pittaDay_border">#DCD1F2</color>
+    <color name="soma_pittaDay_borderSub">#E8E1F6</color>
+    <color name="soma_pittaDay_primary">#7C4DE0</color>
+    <color name="soma_pittaDay_primaryPressed">#623BB4</color>
+    <color name="soma_pittaDay_secondary">#5E8F27</color>
+    <color name="soma_pittaDay_accent">#8B60E6</color>
+    <color name="soma_pittaDay_onFill">#FFFFFF</color>
+
+    <!-- vata-pm · 2-6pm · soft warm lilac -->
+    <color name="soma_vataPm_bg">#FAF5FB</color>
+    <color name="soma_vataPm_elev">#FFFFFF</color>
+    <color name="soma_vataPm_surf">#F3E9F7</color>
+    <color name="soma_vataPm_muted">#EBDCF2</color>
+    <color name="soma_vataPm_strong">#DCC5E9</color>
+    <color name="soma_vataPm_textP">#211629</color>
+    <color name="soma_vataPm_textS">#665873</color>
+    <color name="soma_vataPm_textM">#837394</color>
+    <color name="soma_vataPm_border">#E3D2EE</color>
+    <color name="soma_vataPm_borderSub">#EFE4F4</color>
+    <color name="soma_vataPm_primary">#8B45CE</color>
+    <color name="soma_vataPm_primaryPressed">#7235AE</color>
+    <color name="soma_vataPm_secondary">#7A9A33</color>
+    <color name="soma_vataPm_accent">#9C5BD9</color>
+    <color name="soma_vataPm_onFill">#FFFFFF</color>
+
+    <!-- kapha-pm · 6-10pm · deep forest-charcoal -->
+    <color name="soma_kaphaPm_bg">#1E1733</color>
+    <color name="soma_kaphaPm_elev">#2A2145</color>
+    <color name="soma_kaphaPm_surf">#352A57</color>
+    <color name="soma_kaphaPm_muted">#43356C</color>
+    <color name="soma_kaphaPm_strong">#554487</color>
+    <color name="soma_kaphaPm_textP">#F5F1FC</color>
+    <color name="soma_kaphaPm_textS">#D6CBEE</color>
+    <color name="soma_kaphaPm_textM">#9C90C0</color>
+    <color name="soma_kaphaPm_border">#5B4A8C</color>
+    <color name="soma_kaphaPm_borderSub">#453770</color>
+    <color name="soma_kaphaPm_primary">#B289F3</color>
+    <color name="soma_kaphaPm_primaryPressed">#976BE6</color>
+    <color name="soma_kaphaPm_secondary">#AEDB74</color>
+    <color name="soma_kaphaPm_accent">#C09BF7</color>
+    <color name="soma_kaphaPm_onFill">#1E1733</color>
+
+    <!-- pitta-night · 10pm-2am · warm midnight teal + bright saffron -->
+    <color name="soma_pittaNight_bg">#100C1F</color>
+    <color name="soma_pittaNight_elev">#19132E</color>
+    <color name="soma_pittaNight_surf">#221A3C</color>
+    <color name="soma_pittaNight_muted">#2C224C</color>
+    <color name="soma_pittaNight_strong">#3A2E62</color>
+    <color name="soma_pittaNight_textP">#EFEBF9</color>
+    <color name="soma_pittaNight_textS">#C7BFE4</color>
+    <color name="soma_pittaNight_textM">#8B82B0</color>
+    <color name="soma_pittaNight_border">#413471</color>
+    <color name="soma_pittaNight_borderSub">#2F2656</color>
+    <color name="soma_pittaNight_primary">#9C7BE8</color>
+    <color name="soma_pittaNight_primaryPressed">#8360D6</color>
+    <color name="soma_pittaNight_secondary">#9FCE68</color>
+    <color name="soma_pittaNight_accent">#AD8DEF</color>
+    <color name="soma_pittaNight_onFill">#100C1F</color>
+
+    <!-- At-a-glance tile accents, per period. Light periods get soft sage and
+         amber washes; dark periods get deep jade and amber so the same pairing
+         survives on a dark ground. pitta-day matches the reference mockup. -->
+    <color name="soma_vataDawn_tileCalm">#2A2350</color>
+    <color name="soma_vataDawn_tileCalmStroke">#3D3470</color>
+    <color name="soma_vataDawn_tileWarm">#2D3320</color>
+    <color name="soma_vataDawn_tileWarmStroke">#41492F</color>
+
+    <color name="soma_kaphaAm_tileCalm">#EBE2FB</color>
+    <color name="soma_kaphaAm_tileCalmStroke">#DACDF4</color>
+    <color name="soma_kaphaAm_tileWarm">#EAF5DA</color>
+    <color name="soma_kaphaAm_tileWarmStroke">#D3E8B9</color>
+
+    <color name="soma_pittaDay_tileCalm">#EBE2FB</color>
+    <color name="soma_pittaDay_tileCalmStroke">#D8CAF3</color>
+    <color name="soma_pittaDay_tileWarm">#E7F3D4</color>
+    <color name="soma_pittaDay_tileWarmStroke">#CDE4AF</color>
+
+    <color name="soma_vataPm_tileCalm">#F0E3F6</color>
+    <color name="soma_vataPm_tileCalmStroke">#E0CBEC</color>
+    <color name="soma_vataPm_tileWarm">#F1EFD4</color>
+    <color name="soma_vataPm_tileWarmStroke">#DFDBB4</color>
+
+    <color name="soma_kaphaPm_tileCalm">#332A57</color>
+    <color name="soma_kaphaPm_tileCalmStroke">#473B75</color>
+    <color name="soma_kaphaPm_tileWarm">#2F3722</color>
+    <color name="soma_kaphaPm_tileWarmStroke">#434D32</color>
+
+    <color name="soma_pittaNight_tileCalm">#221B3E</color>
+    <color name="soma_pittaNight_tileCalmStroke">#33295A</color>
+    <color name="soma_pittaNight_tileWarm">#252B1B</color>
+    <color name="soma_pittaNight_tileWarmStroke">#373F28</color>
+
+    <!-- System splash screen background (Theme.Soma.Starting). The OS draws
+         this before app code runs, so it cannot follow the dosha period; it
+         tracks the system light/dark setting instead (see values-night). -->
+    <color name="soma_splash_yellow">#FFE7A733</color>
+    <color name="soma_splash_bg">#7C4DE0</color>
+    <color name="soma_splash_ink">#33220F</color>
+
+    <!-- Late work reads rust against every Soma ground; distinct from the amber star. -->
+    <color name="soma_overdue">#C42A5E</color>
+
+    <!-- 18% of the late rose, for the "LATE" pill behind rose text. -->
+    <color name="soma_overdue_tint">#2EC42A5E</color>
+
+    <!-- Starred. Amber so it never reads as the lime progress accent or the
+         rose used for late work. -->
+    <color name="soma_star">#F0A93C</color>
+
+    <!-- The lime accent is fixed rather than per-period: it has to carry dark
+         text on both the light and the dark grounds, and a period-tinted
+         version goes muddy on the dark ones. -->
+    <color name="soma_accent_fill">#D8F0A8</color>
+    <color name="soma_accent_ink">#2E4712</color>
+
+    <!-- The late rose lifted for dark grounds; #C42A5E goes muddy on them. -->
+    <color name="soma_overdue_on_dark">#FF7FA8</color>
+
+    <!-- Widget palette. RemoteViews cannot read theme attrs, so these are
+         fixed rather than following the active Soma period. -->
+    <color name="widget_ground">#F2EEFC</color>
+    <color name="widget_card">#FFFFFF</color>
+    <color name="widget_ink">#191526</color>
+    <color name="widget_muted">#736C88</color>
+    <color name="widget_accent">#7C4DE0</color>
+</resources>

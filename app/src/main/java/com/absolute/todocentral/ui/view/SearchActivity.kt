@@ -22,8 +22,7 @@ import com.absolute.todocentral.utils.PreferenceHelper
 import com.absolute.todocentral.utils.gone
 import com.absolute.todocentral.utils.visible
 import com.absolute.todocentral.vm.SearchTasksViewModel
-import daio.io.dresscode.dressCodeStyleId
-import daio.io.dresscode.matchDressCode
+import com.absolute.todocentral.utils.applySomaTheme
 
 import kotterknife.bindView
 
@@ -32,13 +31,14 @@ class SearchActivity : BaseActivity(), SearchView.OnQueryTextListener {
     val ivEmptyIllustration: View by bindView(R.id.ivEmptyIllustration)
     val ivNotFound: View by bindView(R.id.ivNotFound)
     val tvEmptyTitle: TextView by bindView(R.id.tvEmptyTitle)
+    private val tvEmptyBody: TextView by bindView(R.id.tvEmptyBody)
     private val mRecyclerView: RecyclerView by bindView(R.id.rvSearchResultsList)
     private lateinit var mViewModel: SearchTasksViewModel
     private lateinit var mAdapter: RecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        matchDressCode()
+        applySomaTheme()
         setContentView(R.layout.activity_search)
         initToolbar()
 
@@ -53,15 +53,16 @@ class SearchActivity : BaseActivity(), SearchView.OnQueryTextListener {
         mRecyclerView.setHasFixedSize(true)
         mRecyclerView.layoutManager = LinearLayoutManager(this)
         mAdapter = RecyclerViewAdapter()
+        mAdapter.grouped = false
         mRecyclerView.adapter = mAdapter
         llEmptyView.visible()
 
-        mAdapter.setOnItemClickListener(object : RecyclerViewAdapter.ClickListener {
-            override fun onTaskClick(v: View, position: Int) {
-                val task = mAdapter.getTaskAtPosition(position)
-                showTaskDetailsActivity(task)
-            }
-        })
+        mAdapter.listListener = object : RecyclerViewAdapter.ListListener {
+            override fun onTaskClick(task: Task) = showTaskDetailsActivity(task)
+            override fun onToggleCompleted(task: Task) = showTaskDetailsActivity(task)
+            override fun onToggleStar(task: Task) = showTaskDetailsActivity(task)
+            override fun onAddTaskClick() = Unit
+        }
     }
 
     private fun updateViewState(tasks: List<Task>) = if (tasks.isEmpty()) showEmptyView(false)
@@ -74,10 +75,12 @@ class SearchActivity : BaseActivity(), SearchView.OnQueryTextListener {
             ivEmptyIllustration.visibility=View.VISIBLE
             ivNotFound.visibility=View.GONE
             tvEmptyTitle.text = getString(R.string.search_view_empty_text)
+            tvEmptyBody.setText(R.string.search_empty_body)
         } else {
             ivEmptyIllustration.visibility=View.GONE
             ivNotFound.visibility=View.VISIBLE
             tvEmptyTitle.text = getString(R.string.search_view_not_found_text)
+            tvEmptyBody.setText(R.string.search_not_found_body)
         }
     }
 
@@ -98,31 +101,27 @@ class SearchActivity : BaseActivity(), SearchView.OnQueryTextListener {
         close.setOnClickListener { searchText.text = "" }
         searchView.setOnQueryTextListener(this)
         searchView.queryHint = getString(R.string.search)
-        searchText.setBackgroundResource(R.drawable.search_view_background)
         val view: View = searchView.findViewById(androidx.appcompat.R.id.search_plate)
+        // The pill goes on the plate, not the text view: the plate is what
+        // spans the whole field, so rounding the text view alone left a square
+        // white box around it.
+        view.setBackgroundResource(R.drawable.search_view_background)
+        searchText.setBackgroundResource(0)
+        searchText.setPadding(
+                (12 * resources.displayMetrics.density).toInt(), 0, 0, 0)
+        searchText.typeface = androidx.core.content.res.ResourcesCompat
+                .getFont(this, R.font.poppins_semibold)
 
-        when(dressCodeStyleId) {
-            R.style.AppTheme_Light -> {
-                searchText.setHintTextColor(ContextCompat.getColor(this, R.color.black))
-                view.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
-            }
-
-            R.style.AppTheme_Dark -> {
-                searchText.setHintTextColor(ContextCompat.getColor(this, R.color.white))
-                view.setBackgroundColor(ContextCompat.getColor(this, R.color.deepBlueGrey))
-            }
-
-            R.style.AppTheme_Black -> {
-                searchText.setHintTextColor(ContextCompat.getColor(this, R.color.white))
-                view.setBackgroundColor(ContextCompat.getColor(this, R.color.black))
-            }
-        }
+        // Taken from the active period rather than a Light/Dark/Black branch,
+        // so the search field follows whichever palette is in effect.
+        searchText.setHintTextColor(resolveThemeColor(R.attr.somaTextM))
+        searchText.setTextColor(resolveThemeColor(R.attr.somaTextP))
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
-            onBackPressed()
+            onBackPressedDispatcher.onBackPressed()
             return true
         }
         return false

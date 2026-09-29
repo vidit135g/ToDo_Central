@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  About. The app had no such screen at all — version, licences and credits
+  were nowhere in the UI. Everything here is read from the build or the
+  bundled licence list rather than typed in, so it cannot drift.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/somaBg">
+
+    <include layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:clipToPadding="false"
+        android:paddingBottom="32dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/gutter"
+            android:paddingEnd="@dimen/gutter">
+
+            <!-- Identity -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:paddingTop="20dp"
+                android:paddingBottom="8dp">
+
+                <FrameLayout
+                    android:layout_width="92dp"
+                    android:layout_height="92dp"
+                    android:background="@drawable/bg_lav_mark_tile">
+
+                    <ImageView
+                        android:layout_width="54dp"
+                        android:layout_height="54dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_splash_mark"
+                        android:contentDescription="@null" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="@string/app_name"
+                    android:fontFamily="@font/poppins_extrabold"
+                    android:textColor="?attr/somaTextP"
+                    android:textSize="@dimen/text_title"
+                    android:letterSpacing="-0.015" />
+
+                <TextView
+                    android:id="@+id/tvAboutVersion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="?attr/somaTextM"
+                    android:textSize="@dimen/text_caption" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="@string/about_blurb"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="?attr/somaTextS"
+                    android:textSize="@dimen/text_caption"
+                    android:lineSpacingMultiplier="1.35" />
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/LavEyebrow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/about_group_app" />
+
+            <LinearLayout
+                style="@style/LavGroupCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvAboutWhatsNew"
+                    style="@style/LavSettingRow"
+                    android:drawableStart="@drawable/drawable_rate"
+                    android:text="@string/about_whats_new" />
+
+                <View style="@style/LavRowDivider" />
+
+                <TextView
+                    android:id="@+id/tvAboutLicences"
+                    style="@style/LavSettingRow"
+                    android:drawableStart="@drawable/drawable_licenses"
+                    android:text="@string/about_licences" />
+
+                <View style="@style/LavRowDivider" />
+
+                <TextView
+                    android:id="@+id/tvAboutPrivacy"
+                    style="@style/LavSettingRow"
+                    android:drawableStart="@drawable/drawable_privacy_policy"
+                    android:text="@string/about_privacy" />
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/LavEyebrow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/about_group_build" />
+
+            <LinearLayout
+                style="@style/LavGroupCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:id="@+id/llAboutBuild"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:gravity="center"
+                android:text="@string/about_footer"
+                android:fontFamily="@font/poppins"
+                android:textColor="?attr/somaTextM"
+                android:textSize="@dimen/text_eyebrow" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

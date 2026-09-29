@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Pre-31 has no splash-screen API; the window background stands in. -->
+    <style name="Theme.TodoCentral.Splash" parent="AppTheme.Soma.PittaDay">
+        <item name="android:windowBackground">@drawable/bg_splash_pre31</item>
+    </style>
+</resources>
