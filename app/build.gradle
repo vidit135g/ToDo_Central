@@ -19,14 +19,28 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
 
+    // Signing credentials come from keystore.properties (git-ignored) or, for
+    // CI, the matching environment variables. Nothing secret lives in this
+    // file: it is public, and the password used to sit here in plain text.
+    def keystoreProps = new Properties()
+    def keystorePropsFile = rootProject.file("keystore.properties")
+    if (keystorePropsFile.exists()) {
+        keystorePropsFile.withInputStream { keystoreProps.load(it) }
+    }
+
+    def ksPath = keystoreProps["storeFile"] ?: System.getenv("TC_KEYSTORE_FILE")
+    def ksStorePass = keystoreProps["storePassword"] ?: System.getenv("TC_KEYSTORE_PASSWORD")
+    def ksAlias = keystoreProps["keyAlias"] ?: System.getenv("TC_KEY_ALIAS")
+    def ksKeyPass = keystoreProps["keyPassword"] ?: System.getenv("TC_KEY_PASSWORD")
+    def canSign = ksPath != null && file(ksPath).exists() && ksStorePass != null
+
     signingConfigs {
         release {
-            def ks = file("/Users/viditgupta/Documents/Project fix/release.keystore")
-            if (ks.exists()) {
-                storeFile ks
-                storePassword "android123"
-                keyAlias "releaseKey"
-                keyPassword "android123"
+            if (canSign) {
+                storeFile file(ksPath)
+                storePassword ksStorePass
+                keyAlias ksAlias
+                keyPassword ksKeyPass
             }
         }
     }
@@ -39,7 +53,7 @@ android {
 
     buildTypes {
         release {
-            signingConfig signingConfigs.release
+            signingConfig canSign ? signingConfigs.release : null
             minifyEnabled false
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

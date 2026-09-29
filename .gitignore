@@ -15,3 +15,8 @@
 *.apk
 app/lint-report.txt
 lint-report.txt
+
+# Signing credentials
+keystore.properties
+*.keystore
+*.jks
